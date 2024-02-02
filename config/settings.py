@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -17,6 +18,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+sys.modules['fontawesome_free'] = __import__('fontawesome-free')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -28,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # dependencias
+    'fontawesome_free',
 
     # Mis aplicaciones
     'authentication',
