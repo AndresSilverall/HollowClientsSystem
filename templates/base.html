@@ -6,33 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 		<script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
-		<script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-		
-
+		<link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
     <title>Base template</title>
+		
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-			<a class="navbar-brand" href="#"> Logo</a>
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#"> <img src="{% static 'images/logo.png' %}" width="30" height="30" alt="logo.png"> HollowClient </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="#"><i class="fas fa-home fa-2x"></i></span></a>
 					</li>
 					<li class="navbar-item">
-						<a class="nav-link" href="#">Link</a>
+						<a class="nav-link" href="#">Servicios</a>
+					</li>
+					<li class="navbar-item">
+						<a class="nav-link" href="#">Sobre nosotros</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fas fa-user-circle"></i>
+							<i class="fas fa-user-circle fa-2x"></i>
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="#">Action</a>
@@ -45,12 +44,8 @@
 			</div>
 
 		</nav>
-		<div class="container">
-			<h1 class="text-center py-5"> Usuario: </h1>
-			<i class="fas fa-unlock-alt"></i>
-			<i class="fas fa-unlock-alt"></i>
-		</div>
+	</div>
 
-	
+	<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

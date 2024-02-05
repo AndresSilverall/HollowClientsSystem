@@ -1,0 +1,25 @@
+@media only screen and (min-width: 992px) {
+    .navbar .navbar-nav .nav-item .nav-link {
+      padding: 0 16px;
+    }
+
+    .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
+        border-right: 2px solid gray;
+      }
+    }
+
+    .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
+        border-right: 2px solid gray;
+      }
+    
+
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.navbar {
+    background-color: burlywood;
+}

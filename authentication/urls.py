@@ -1,8 +1,8 @@
 from django.urls import path
-from authentication.views import example_view
+from . import views
 
 
 urlpatterns = [
-    path('index/', example_view, name="index"),
+    path('', view=views.home_page, name="home"),
     
 ]
