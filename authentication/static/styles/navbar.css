@@ -1,21 +1,23 @@
 .navbar .navbar-nav .nav-link {
   font-size: 1.1em;
-
-
+  
 }
+
+
 @media screen and (min-width: 992px) {
   .navbar .navbar-nav .nav-link {
     padding: 0 0.5em;
   }
 
   .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
-    border-right: 3px solid gray;
+    border-right: 3px solid white;
   }
 }
 
-
-a {
-  margin: 5px;
+.navbar {
+  width: 100%;
+  min-width:100%;
+  max-width:100%;
 }
 
 
