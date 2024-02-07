@@ -1,8 +1,7 @@
-footer {
-    position:fixed;
-   left:0px;
-   bottom:0px;
-   height:300px;
-   width:100%;
+ footer {
+    position: absolute;
+    bottom: 0;
+    height: 400px;
+    width: 100%;
    
 }

@@ -6,19 +6,15 @@
 
 @media screen and (min-width: 992px) {
   .navbar .navbar-nav .nav-link {
-    padding: 0 0.5em;
+    padding: 0.5em;
   }
 
-  .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
-    border-right: 3px solid white;
+  .navbar .navbar-nav .nav-item:not(:last-child) {
+    border-right: 3px solid black;
   }
 }
 
-.navbar {
-  width: 100%;
-  min-width:100%;
-  max-width:100%;
-}
+
 
 
 * {
