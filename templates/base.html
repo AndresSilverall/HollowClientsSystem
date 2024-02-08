@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+		<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 		<link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 		<script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-		<link rel="stylesheet" href="{% static 'styles/navbar.css' %}" type="text/css">
-		<link rel="stylesheet" href="{% static 'styles/footer.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+		<link rel="stylesheet" type="text/css" href="{% static 'apps/authentication/styles/navbar.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'apps/authentication/styles/styles/footer.css' %}">
     <title>Hollow Clients System</title>
 		
 </head>
 <body>
-		<nav class="navbar nav-fill w-100 navbar-expand-lg">
-			<a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'images/logo.png' %}" width="30" height="30" alt="logo.png"> Hollow Clients </a>
+		<nav class="navbar nav-fill w-100 navbar-expand-lg" style="background-color: #3b5998;">
+			<a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'images/favicon.png' %}" width="30" height="30" alt="logo.png"> Hollow Clients </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>

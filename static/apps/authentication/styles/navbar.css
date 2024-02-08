@@ -15,6 +15,9 @@
 }
 
 
+.navbar-brand a {
+  padding: 10px;
+}
 
 
 * {
