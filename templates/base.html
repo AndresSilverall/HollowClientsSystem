@@ -9,7 +9,7 @@
 		<script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
 		<link rel="stylesheet" type="text/css" href="{% static 'apps/authentication/styles/navbar.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'apps/authentication/styles/styles/footer.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'apps/authentication/styles/footer.css' %}">
     <title>Hollow Clients System</title>
 		
 </head>
@@ -21,14 +21,17 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home fa-2x"></i></span></a>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home fa-2x"></i></a>
 					</li>
 					<li class="navbar-item">
 						<a class="nav-link" href="#">Servicios</a>
 					</li>
 					<li class="navbar-item">
 						<a class="nav-link" href="#">Sobre nosotros</a>
+					</li>
+					<li class="navbar-item">
+						<a class="nav-link" href="#">Tienda</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -277,7 +280,6 @@
 								<a class="text-white">Bootstrap Angular</a>
 							</p>
 						</div>
-						<hr class="w-100 clearfix d-md-none" />
 						<hr class="w-100 clearfix d-md-none" />
 						<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
 							<h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
