@@ -1,8 +1,8 @@
 .navbar {
+  font-family:sans-serif;
+  background-color: #fafafa;
 
-  background-color:#bebfdd;
 }
-
 
 
 .navbar-brand img {
@@ -10,9 +10,31 @@
 }
 
 
+body {
+  background-color: #fcfcfc;
+}
+
 .nav-item .nav-link li {
   justify-content: center;
 }
+
+
+
+.navbar .nav-link:hover {
+  color: #070f4e;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.navbar .nav-item .nav-link {
+  margin-right: 25px;
+}
+
+
+.far .nav-item .nav-link .dropdown-menu {
+  justify-content: end;
+}
+
 
 * {
     margin: 0px;
