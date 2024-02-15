@@ -1,6 +1,7 @@
 .navbar {
-  font-family:sans-serif;
-  background-color: #fafafa;
+  font-size:large;
+  font-family: url('/HollowClientsSystem/static/fonts/Cerebri_Sans_ExtraBold.ttf') format("ttf");
+  background-color: #5c5470;
 
 }
 
@@ -14,17 +15,33 @@ body {
   background-color: #fcfcfc;
 }
 
+
 .nav-item .nav-link li {
   justify-content: center;
 }
 
 
+.nav-link {
+  color:#fcfcfc;
+}
 
-.navbar .nav-link:hover {
-  color: #070f4e;
-  opacity: 0.3;
+
+.far {
+  color: #fcfcfc;
+}
+
+
+.navbar-brand  {
+  color: #fcfcfc;
+}
+
+
+.nav-link:hover {
+  color: #dbd8e3;
+  opacity: 0.4;
   cursor: pointer;
 }
+
 
 .navbar .nav-item .nav-link {
   margin-right: 25px;
