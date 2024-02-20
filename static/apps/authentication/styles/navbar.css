@@ -1,6 +1,21 @@
+@font-face {
+  font-family: "navBarFontFamily";
+  src: url("/HollowClientsSystem/static/fonts/Cerebri_Sans_ExtraBold.ttf")format("ttf");
+}
+
+@font-face {
+  font-family: "brandFont";
+  src: url("/HollowClientsSystem/static/fonts/SHRIMP.ttf")format("ttf");
+}
+
+
 .navbar {
-  font-size:large;
-  font-family: url('/HollowClientsSystem/static/fonts/Cerebri_Sans_ExtraBold.ttf') format("ttf");
+  font-size: large;
+  font-family: "navBarFontFamily", sans-serif;
+}
+
+
+.navbar {
   background-color: #5c5470;
 
 }
@@ -31,14 +46,15 @@ body {
 }
 
 
-.navbar-brand  {
-  color: #fcfcfc;
+.navbar-brand{
+  color:#fcfcfc;
+  font-family: "brandFont", sans-serif;
 }
 
 
 .nav-link:hover {
   color: #dbd8e3;
-  opacity: 0.4;
+  opacity: 0.3;
   cursor: pointer;
 }
 
@@ -52,6 +68,25 @@ body {
   justify-content: end;
 }
 
+
+.carousel-indicators .carousel-inner .carousel-item  {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+.card-text {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: justify;
+}
+
+
+.card .img-fluid:hover {
+  color: #dbd8e3;
+  opacity: 0.5;
+  cursor: pointer;
+
+}
 
 * {
     margin: 0px;

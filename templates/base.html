@@ -16,23 +16,23 @@
 <body>
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo.png" width="30" height="24"> Hollow Customers</a>
+			<a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo.png" width="30" height="30"> Hollow Customers</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="{% url 'home' %}">Inicio</i></i></a>
+						<a class="nav-link" aria-current="page" href="{% url 'home' %}">Inicio</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#services">Servicios</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Sobre nosotros</a>
+						<a class="nav-link" href="{% url 'about_us' %}">Sobre nosotros</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							<i class="far fa-user"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -59,21 +59,21 @@
 					<img src="{% static 'apps/authentication/images/carousel_one.jpg' %}" class="d-block w-100" alt="carousel_one.jpg">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Gestión y Administración</h5>
-						<p>Permite poder llevar a cabo un control adecuado de la información del cliente.</p>
+						<p class="lead">Permite poder llevar a cabo un control adecuado de la información del cliente.</p>
 					</div>
 				</div>
 				<div class="carousel-item">
 					<img src="{% static 'apps/authentication/images/carousel_two.jpg' %}" class="d-block w-100" alt="carousel_two.jpg">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Automatiza procesos</h5>
-						<p>Automatiza tareas evitando cargas repetitivas lo que hace que aumente la productividad del cliente.</p>
+						<p class="lead">Automatiza tareas evitando cargas repetitivas lo que hace que aumente la productividad del cliente.</p>
 					</div>
 				</div>
 				<div class="carousel-item">
 					<img src="{% static 'apps/authentication/images/carousel_three.jpg' %}" class="d-block w-100" alt="carousel_three.jpg">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Mejora las relaciones con la empresa</h5>
-						<p>La empresa y sus clientes mantienen una estrecha elación  de las diferentes actividades.</p>
+						<p class="lead">La empresa y sus clientes mantienen una estrecha elación  de las diferentes actividades.</p>
 					</div>
 				</div>
 			</div>
@@ -97,7 +97,7 @@
 							<img src="{% static 'apps/authentication/images/customer_service.jpg' %}" class="img-fluid rounded-start" alt="customer_service.jpg">
 						</div>
 						<div class="col-md-8">
-							<div class="card-header">
+							<div class="card-header lead">
 								Atención al cliente
 							</div>
 							<div class="card-body">
@@ -114,7 +114,7 @@
 							<img src="{% static 'apps/authentication/images/products.jpg' %}" class="img-fluid rounded-start" alt="products.jpg">
 						</div>
 						<div class="col-md-8">
-							<div class="card-header">
+							<div class="card-header lead">
 								Gestión de productos
 							</div>
 							<div class="card-body">
@@ -130,7 +130,7 @@
 							<img src="{% static 'apps/authentication/images/tasks.jpg' %}" class="img-fluid rounded-start" alt="tasks.jpg">
 						</div>
 						<div class="col-md-8">
-							<div class="card-header">
+							<div class="card-header lead">
 								Asignación de Tasks
 							</div>
 							<div class="card-body">
@@ -146,7 +146,7 @@
 							<img src="{% static 'apps/authentication/images/inventory_control.jpg' %}" class="img-fluid rounded-start" alt="inventory_control.jpg">
 						</div>
 						<div class="col-md-8">
-							<div class="card-header">
+							<div class="card-header lead">
 								Control de inventario
 							</div>
 							<div class="card-body">

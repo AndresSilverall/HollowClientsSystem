@@ -16,3 +16,7 @@ def user_login(request):
 
 def user_logout(request):
     return None
+
+
+def about_us(request):
+    return render(request, "about_us.html")
