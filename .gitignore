@@ -6,13 +6,9 @@ __pycache__/
 *.pyc
 
 
-# Archivo de configuración local
-.env
-
 # Archivos de registro y datos temporales
 logs/
 *.log
-*.sql
 
 
 # Archivos de dependencias y entorno

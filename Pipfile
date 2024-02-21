@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 fontawesome-free = "==5.15.4"
+pymysql = "*"
+cryptography = "*"
 
 [dev-packages]
 
