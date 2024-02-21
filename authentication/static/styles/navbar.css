@@ -48,7 +48,7 @@ body {
 
 .navbar-brand{
   color:#fcfcfc;
-  font-family: "brandFont", sans-serif;
+  font-family: "brandFont";
 }
 
 
@@ -60,19 +60,13 @@ body {
 
 
 .navbar .nav-item .nav-link {
-  margin-right: 25px;
+  margin-right: 35px;
 }
 
 
 .far .nav-item .nav-link .dropdown-menu {
   justify-content: end;
 }
-
-
-.carousel-indicators .carousel-inner .carousel-item  {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 
 
 .card-text {

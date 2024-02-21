@@ -4,3 +4,13 @@ root = true
 [*]
 indent_style = space
 indent_size = 2
+
+
+[*.py]    # Para archivos Python
+indent_style = space
+indent_size = 4   # Cambia a 4 espacios para Python
+
+
+[*.js]    # Para archivos JavaScript
+indent_style = space
+indent_size = 2   # Puedes mantener 2 espacios para JavaScript
