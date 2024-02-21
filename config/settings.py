@@ -7,6 +7,7 @@ import mimetypes
 
 mimetypes.add_type("text/css", ".css", True)
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -86,6 +87,21 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
+
+print(os.getenv("DB_NAME"), os.getenv("DB_HOST"), os.getenv("DB_USER"))
+
+
+"""DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': clients,
+        'HOST': localhost,
+        'USER': root,
+        'PASSWORD': 3017454086,
+        'PORT': 3306,
+    }
+}"""
+
 
 
 # Password validation
