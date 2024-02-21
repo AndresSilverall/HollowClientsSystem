@@ -2,6 +2,10 @@
 root = true
 
 [*]
+charset = utf-8
+
+
+[*]
 indent_style = space
 indent_size = 2
 
@@ -14,3 +18,7 @@ indent_size = 4   # Cambia a 4 espacios para Python
 [*.js]    # Para archivos JavaScript
 indent_style = space
 indent_size = 2   # Puedes mantener 2 espacios para JavaScript
+
+
+[*]
+insert_final_newline = true
