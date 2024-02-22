@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre nosotros</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title%}Sobre nosotros{% endblock %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css'%}">
+{% endblock %}
+
+{% block content%}
+
+<h3 class="text-center lead py-5">Nosotros</h3>
+<div class="container d-flex min-vh-100 justify-content-center py-5">
+    <p class="display-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam natus dicta minus, reprehenderit blanditiis magnam ratione explicabo voluptas sit a culpa, animi iste quaerat, fugiat dolorem accusamus tenetur? Earum, nesciunt?</p>
+</div>
+
+{% endblock %}
