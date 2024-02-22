@@ -2,7 +2,6 @@ from pathlib import Path
 import sys
 import os
 import mimetypes
-# from dotenv import load_dotenv
 
 
 mimetypes.add_type("text/css", ".css", True)
@@ -26,9 +25,27 @@ ALLOWED_HOSTS = []
 
 sys.modules['fontawesome_free'] = __import__('fontawesome-free')
 
+
+# admin panel 
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "simplex",
+}
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Hollow Customer System",
+    "site_logo": "images/admin_logo.png",
+    "welcome_sign": "Bienvenido al panel de administración de Hollow Customer System.",
+    "search_model": ["auth.User", "auth.Group"],
+}
+
+
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +59,7 @@ INSTALLED_APPS = [
     # Mis aplicaciones
     'authentication',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,20 +105,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
-
-print(os.getenv("DB_NAME"), os.getenv("DB_HOST"), os.getenv("DB_USER"))
-
-
-"""DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': clients,
-        'HOST': localhost,
-        'USER': root,
-        'PASSWORD': 3017454086,
-        'PORT': 3306,
-    }
-}"""
 
 
 
