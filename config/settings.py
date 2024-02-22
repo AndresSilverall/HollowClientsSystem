@@ -38,6 +38,29 @@ JAZZMIN_SETTINGS = {
     "site_logo": "images/admin_logo.png",
     "welcome_sign": "Bienvenido al panel de administración de Hollow Customer System.",
     "search_model": ["auth.User", "auth.Group"],
+    # Whether to display the side menu
+    "show_sidebar": True,
+    # Whether to aut expand the menu
+    "navigation_expanded": True,
+    "copyright": "Hollow Customers System",
+       "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Inicio",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        {"name": "Apoyo", "url": "https://github.com/AndresSilverall", "new_window": True},
+
+        {"name": "App", "url": "https://github.com/AndresSilverall", "new_window": True},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "authentication"},
+        
+    ], 
+    
 }
 
 
