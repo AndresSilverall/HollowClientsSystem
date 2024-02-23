@@ -1,5 +1,22 @@
-.form-login {
-    border-style: solid;
-    border-radius: 10px;
-    border-color: aqua;
+body {
+    background: #F0F2F0;  
+    background: -webkit-linear-gradient(to right, #000C40, #F0F2F0); 
+    background: linear-gradient(to right, #000C40, #F0F2F0); 
 }
+
+
+.form-group {
+    background-color: #fafafa;
+    height: 500px;
+    width: 300px;
+    border-width: 1px;
+    padding-top: 40px;
+    border-style: solid;
+    box-shadow: 5px 5px 5px 5px #5c5470;
+}
+
+
+.alert {
+    display:inline-block;
+   
+ }

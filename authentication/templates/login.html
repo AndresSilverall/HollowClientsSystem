@@ -5,24 +5,51 @@
 {% block title%}Login{% endblock %}
 
 {% block extra_styles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
 {% endblock %}
 
 {% block content%}
 
-<h3 class="text-center lead py-5">Inicio de sesion </h3>
-<div class="container d-flex min-vh-100 justify-content-center py-5">
-    <form action="{% url 'login' %}" method="POST">
-        
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-primary"> Ingresar </button>
-        {% for message in messages.errors %}
-            <div class="alert alert-danger">
-                {{ message }}
-            </div>
-        {% endfor %}
-    </form>
+<div class="h-100 d-flex align-items-center justify-content-center py-5">
+	<form action="{% url 'login' %}" method="POST">
+		{% csrf_token %}
+		<div class="form-group">
+			<h3 class="lead text-center py-4 display-6">Iniciar sesión</h3>
+			<div class="col-md-8 mx-5">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">
+							<label for="username"><i class="fas fa-user"></i></label>
+						</span>
+					</div>
+					<input class="form-control" type="text" name="username" id="username" placeholder="Nombre de usuario">
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">
+							<label for="password"><i class="fas fa-lock"></i></label>
+						</span>
+					</div>
+					<input class="form-control" type="password" name="password" id="password" placeholder="Contraseña">
+					<div class="d-grid gap-2"></div>
+					<a class="py-1"  href="{% url 'change_password' %}"><small>¿Olvidaste tu Contraseña?</small> </a>
+				</div>
+				<div class="d-grid gap-2">
+					<button class="btn btn-primary" type="submit">Ingresar</button>
+					<a class=""  href="{% url 'register' %}"><small> ¿No eres un miembro? Registrate ya!</small></a>
+				</div>
+			</div>
+			<br>
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-danger alert-dismissible fade show" role="alert"">
+						{{ message }}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</form>
 </div>
 
 {% endblock %}

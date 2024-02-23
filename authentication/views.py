@@ -36,6 +36,7 @@ def user_login(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
+        print(username,password)
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -50,9 +51,13 @@ def user_login(request):
     return render(request, "login.html", context=context)
 
 
-def user_logout(request):
-    return None
-
-
 def about_us(request):
     return render(request, "about_us.html")
+
+
+def restart_password(request):
+    return render(request, "change_password.html")
+
+
+def user_logout(request):
+    return None
