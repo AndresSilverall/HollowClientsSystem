@@ -12,7 +12,10 @@
 
 <div class="container py-5">
     <form action="{% url 'register' %}" method="POST">
-        {{ form.as_p  }}
+        {{ form.username  }}
+				{{ form.email  }}
+				{{ form.password1  }}
+				{{ form.password2  }}
         {% csrf_token %}
         <button class="btn btn-primary"> Registrarse </button>
         {% if messages %}

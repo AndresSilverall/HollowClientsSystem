@@ -8,8 +8,8 @@ $(document).on("submit", "#login-form", function(e) {
       type: 'POST',
       url:  '/login/',
       data: {
-          username: $("input[name='username']").val(),
-          password: $("input[name='password']").val(),
+          username: $('#username').val(),
+          password: $('#password').val(),
           csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
       },
       success: function(data) {

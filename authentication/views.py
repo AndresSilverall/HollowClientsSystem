@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
-from authentication.forms import CreateNewUser
+from authentication.forms import CreateNewUser, ChangePasswordForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash #keep it the user session active
 
 
-# Vistas de autenticacion.
+# Vista del Home Page
 def home_page(request):
     return render(request, "base.html")
 
 
+# Vista de registro de usuario
 def user_registration(request):
 
     form = CreateNewUser()
@@ -18,7 +20,7 @@ def user_registration(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             form.save()
-            messages.success(request, "Usuario registrado con exito!")
+            messages.success(request, f"Usuario {username} registrado con exito!")
         else:
             messages.error(request, "Error, Datos no coinciden!")
 
@@ -29,6 +31,7 @@ def user_registration(request):
     return render(request, "register.html", context=context)
 
 
+# Vista de login de usuario
 def user_login(request):
 
     form = CreateNewUser()
@@ -51,13 +54,27 @@ def user_login(request):
     return render(request, "login.html", context=context)
 
 
-def about_us(request):
-    return render(request, "about_us.html")
-
-
+# Vista de reestablecer contraseña
 def restart_password(request):
-    return render(request, "change_password.html")
+    form = ChangePasswordForm(user=request.user)
+    if request.method == "POST":
+        form = ChangePasswordForm(user=request.POST, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Contraseña restablecida con exito!")
+    
+    context = {
+        "form": form
+    }
+
+    return render(request, "change_password.html", context=context)
 
 
+# Vista para cerrar la sesion
 def user_logout(request):
     return None
+
+
+# Vista sobre informacion de la App
+def about_us(request):
+    return render(request, "about_us.html")
