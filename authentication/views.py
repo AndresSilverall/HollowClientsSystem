@@ -44,7 +44,7 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("home")
+            return redirect("menu")
         else:
             messages.error(request,"Error, usuario o contraseña incorrecta!")
 
@@ -73,7 +73,8 @@ def restart_password(request):
 
 # Vista para cerrar la sesion
 def user_logout(request):
-    return None
+    logout(request)
+    return redirect("home")
 
 
 # Vista sobre informacion de la App

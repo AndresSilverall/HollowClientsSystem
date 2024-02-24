@@ -81,6 +81,9 @@ INSTALLED_APPS = [
 
     # Mis aplicaciones
     'authentication',
+    'menu',
+    'tasks',
+    'polls',
 ]
 
 
@@ -179,3 +182,8 @@ BS_ICONS_BASE_URL = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Redirigir
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
