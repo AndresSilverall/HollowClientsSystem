@@ -1,16 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
 .navbar {
     padding-top: 0px;
     position: inherit;
     background-color: #5c5470;
   
-  }
+}
 
 
   body {
     color: #ffffff;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
   }
