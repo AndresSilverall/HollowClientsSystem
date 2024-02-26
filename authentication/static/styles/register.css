@@ -1,3 +1,13 @@
-body {
-    background-color: aqua;
+* {
+    padding: 0px;
+    margin: 0px;
 }
+
+
+body {
+    background: #F0F2F0; 
+    background: -webkit-linear-gradient(to right, #000C40, #F0F2F0);  
+    background: linear-gradient(to right, #000C40, #F0F2F0); 
+    
+}
+

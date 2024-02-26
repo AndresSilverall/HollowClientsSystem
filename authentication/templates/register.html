@@ -10,27 +10,25 @@
 
 {% block content%}
 
-<div class="container py-5">
+<div class="container py-5 h-100">
     <form action="{% url 'register' %}" method="POST">
         {{ form.username  }}
 				{{ form.email  }}
 				{{ form.password1  }}
 				{{ form.password2  }}
         {% csrf_token %}
-        <button class="btn btn-primary"> Registrarse </button>
-        {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-success">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-
-            {% if form.errors %}
-            <div class="alert alert-danger">
-                {{form.errors}}
-            </div>
-            {% endif %}
+        <button class="btn btn-primary"> Registrarse </button> <br>
+            {% for message in messages %}
+							{% if messages %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+							{% else %}
+								<div class="alert alert-danger">
+										{{ message.eror }}
+								</div>
+        			{% endif %}
+						{% endfor %}
     </form>
    
 </div>

@@ -25,13 +25,13 @@ class CreateNewUser(UserCreationForm):
         
         self.fields["password1"].widget.attrs.update({
             "class": "form-control", 
-            "placeholder": "Password", 
+            "placeholder": "Contraseña", 
             "id": "password"
             })
         
         self.fields["password2"].widget.attrs.update({
             "class": "form-control", 
-            "placeholder": "Repeat your password", 
+            "placeholder": "Repita su contraseña", 
             "id": "password2"
             })
 
@@ -45,18 +45,21 @@ class ChangePasswordForm(PasswordChangeForm):
         
         self.fields['old_password'].widget.attrs.update({
             'id': 'old_password',
-            'class': 'form-control', 
-            'placeholder': "Old Password"
+            'required': True,
+            'class': 'form-control form-control-ls', 
+            'placeholder': "Ingrese su antigua contraseña"
             })
         
         self.fields['new_password1'].widget.attrs.update({
             'id': 'new_password1', 
-            'class': 'form-control', 
-            'placeholder': "New Password"
+            'required': True,
+            'class': 'form-control form-control-ls', 
+            'placeholder': "Ingrese su nueva contraseña"
             })
         
         self.fields['new_password2'].widget.attrs.update({
             'id': 'new_password2', 
-            'class': 'form-control', 
-            'placeholder': "New Password"
+            'class': 'form-control form-control-ls', 
+            'required': True,
+            'placeholder': "Confirme su nueva contraseña"
             })

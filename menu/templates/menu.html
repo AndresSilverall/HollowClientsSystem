@@ -89,6 +89,7 @@
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
 													{% if user.is_authenticated %}
 													<li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> {{ request.user }}</a></li>
+													<li><a class="dropdown-item" href="#"><i class="fas fa-lock"></i> Cambiar contraseña</a></li>
 													<li><a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Configuración</a></li>
 													<li><hr class="dropdown-divider"></li>
 													<li><a class="dropdown-item" href="{% url 'logout' %}"> <i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>

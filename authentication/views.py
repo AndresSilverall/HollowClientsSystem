@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from authentication.forms import CreateNewUser, ChangePasswordForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -10,8 +11,9 @@ def home_page(request):
     return render(request, "base.html")
 
 
-# Vista de registro de usuario
 def user_registration(request):
+
+    # Vista de registro de usuario, Valida los datos del formulario.
 
     form = CreateNewUser()
 
@@ -20,9 +22,16 @@ def user_registration(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             form.save()
-            messages.success(request, f"Usuario {username} registrado con exito!")
-        else:
-            messages.error(request, "Error, Datos no coinciden!")
+            messages.success(request, f"Usuario '{username}' registrado con exito!")
+
+        elif request.POST["password1"] != request.POST["password2"]:
+            messages.error(request, "Error, las contraseñas ingresadas no coinciden.")
+
+        elif User.objects.filter(username=request.POST["username"]).exists():
+            messages.error(request, "Error, el usuario ya se encuentra registrado.")
+
+        elif User.objects.filter(email=request.POST["email"]).exists():
+            messages.error(request, "Error, el email ingresado ya se encuentra en uso.")
 
     context = {
         "form": form
