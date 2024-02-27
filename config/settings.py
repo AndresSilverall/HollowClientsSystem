@@ -82,6 +82,8 @@ INSTALLED_APPS = [
     # Mis aplicaciones
     'authentication',
     'menu',
+    'customer_service',
+    'sales_management',
     'tasks',
     'polls',
 ]
