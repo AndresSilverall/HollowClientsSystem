@@ -12,27 +12,27 @@ class CreateNewUser(UserCreationForm):
         super(CreateNewUser, self).__init__(*args, **kwargs)
 
         self.fields["username"].widget.attrs.update({
-            "class": "form-control py-1",
+            "class": "form-control form-control-lg",
             "placeholder": "Nombre de usuario",
-            "id": "username"
+            "id": "typeUsername"
             })
         
         self.fields["email"].widget.attrs.update({
-            "class": "form-control", 
+            "class": "form-control form-control-lg", 
             "placeholder": "Email", 
-            "id": "email"
+            "id": "typeEmail"
             })
         
         self.fields["password1"].widget.attrs.update({
-            "class": "form-control", 
+            "class": "form-control form-control-lg", 
             "placeholder": "Contraseña", 
-            "id": "password"
+            "id": "typePasswor1"
             })
         
         self.fields["password2"].widget.attrs.update({
-            "class": "form-control", 
+            "class": "form-control form-control-lg", 
             "placeholder": "Repita su contraseña", 
-            "id": "password2"
+            "id": "typePassword2"
             })
 
 

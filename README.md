@@ -2,16 +2,19 @@
 
 Aplicación web para el proyecto final de ADSO la cual consiste en administrar, gestionar y mejorar las relaciones entre una empresa y sus clientes, construida con el framework Django de Python, y otras tecnologías como JavaScript y CSS, Bootstrap y MySQL.
 
-<img src="assets/logo.png" width="230" height="230" alt="logo.png">
+<img src="assets/logo.png" width="220" height="220" alt="logo.png">
 
 
 ## Tecnologías usadas
 
 - Python versión 3.8.5
+- JavaScript
 - Framework Django versión 4.2.5
 - Bootstrap versión 5.3
 - CSS
 - HTML5
+- MySQL
+- jQuery
 - IDE (Visual studio code)
 - GIT versión 2.37.2.windows.2
 
