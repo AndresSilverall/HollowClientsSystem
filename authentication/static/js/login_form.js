@@ -4,18 +4,23 @@ $(document).on("submit", "#login-form", function(e) {
     console.log("se clickeo")
     $.ajax({
         type: 'POST',
-        url:  "/login/",
+        dataType:'html',
+        url:  '/login/',
         data: {
-            username: $('#username').val(),
-            password: $('#password').val(),
+            username: $("input[name='username']").val(),
+            password: $("input[name='password']").val(),
             csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
         },
-        success: function(data) {
+        success: function(response) {
         // Eliminar los datos de entrada de los inputs cuando se hace submit. 
         $("input[name='username']").val("")
         $("input[name='password']").val("")
-        $("#success").html(data)
-        
+        alert("Sesion!")
+        $("#message-content").html(response)
+
+      },
+      error: function (xhr, status, error) {
+        console.log("error de respuesta", error)
       }
 
       });
