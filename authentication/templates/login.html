@@ -11,7 +11,7 @@
 
 
 {% block content%}
-<form id="login-form">
+<form id="login-form" action="{% url 'login' %}" method="POST">
   {% csrf_token %}
   <section class="vh-50 gradient-custom py-5">
     <div class="container py-5 h-100">
@@ -31,13 +31,13 @@
                   <input type="password" id="password" class="form-control form-control-lg" name="password" id="password" placeholder="Ingresa tu contraseña">
                 </div>
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Iniciar sesión</button>
-                <div id="message-content" class="d-flex justify-content-center text-center mt-4 pt-1">
+                <div class="d-flex justify-content-center text-center mt-4 pt-1" id="content-result">
                   {% if messages %}
                     {% for message in messages %}
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                      <i class="fas fa-exclamation-triangle"></i> {{ message }}
-                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
                     {% endfor %}
                   {% endif%}
                 </div>

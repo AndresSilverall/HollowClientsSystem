@@ -1,0 +1,57 @@
+{% extends "menu.html" %}
+
+{% block title %} Tareas {% endblock %}
+
+{% block content %}
+<h3 class="lead" style="color: blue;"> Realice la asignacion de tareas <i class="fas fa-tasks"></i></h3>
+
+<div class="table-responsive">
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr class="table table-primary bg-gradient">
+				<th> # </th>
+				<th> Contacto </th>
+				<th> Tarea </th>
+				<th> Fecha </th>
+				<th> Estado </th>
+				<th> Accion </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> 1 </td>
+				<td> Juan </td>
+				<td> Hacer resporte </td>
+				<td> 2023-07-13 </td>
+				<td> <i class="fas fa-check-square"></i> </td>
+				<td> Normal </td>
+			</tr>
+			<tr>
+				<td> 1 </td>
+				<td> Juan </td>
+				<td> Hacer resporte </td>
+				<td> 2023-07-13 </td>
+				<td> Activa </td>
+				<td> Normal </td>
+			</tr>
+			<tr>
+				<td> 1 </td>
+				<td> Juan </td>
+				<td> Hacer resporte </td>
+				<td> 2023-07-13 </td>
+				<td> Activa </td>
+				<td> Normal </td>
+			</tr>
+			<tr>
+				<td> 1 </td>
+				<td> Juan </td>
+				<td> Hacer resporte </td>
+				<td> 2023-07-13 </td>
+				<td> Activa </td>
+				<td><button class="btn btn-primary">Editar</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}
