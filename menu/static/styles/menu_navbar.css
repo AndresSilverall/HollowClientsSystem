@@ -4,6 +4,23 @@
 }
 
 
+.nav-link {
+  color:#fcfcfc;
+}
+
+
+.nav-pills .nav-link {
+  padding: 20px;
+}
+
+
+.nav-link:hover {
+  color: #dbd8e3;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+
 .navbar {
     padding-top: 0px;
     position: inherit;
