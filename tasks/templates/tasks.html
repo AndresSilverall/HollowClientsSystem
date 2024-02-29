@@ -77,6 +77,12 @@
 		</ul>
 	  </nav>
 </div>
-<script src="{% static 'js/script.js' %}"></script>
+{% block child_js_below_files %} 
+<script src="{% static 'js/hide_message.js' %}"></script>
 {% endblock %}
+
+{% endblock %}
+
+
+
 

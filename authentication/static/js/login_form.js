@@ -15,7 +15,7 @@ $(document).on("submit", "#login-form", function(e) {
         $("input[name='username']").val("")
         $("input[name='password']").val("")
         alert("Sesion!")
-        $('#login-form').html(data)
+        $('body').html(data)
     
       },
 
