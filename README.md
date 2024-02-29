@@ -91,3 +91,11 @@ pipenv run server
 ```
 
 luego abra su navegador web e ingrese la siguiente dirección: `127.0.0.1:8000` y podrá hacer uso del funcionamiento de la aplicación.
+
+
+## Ejecución de las pruebas software (Unit testing)
+
+```python
+pipenv run test
+
+```
