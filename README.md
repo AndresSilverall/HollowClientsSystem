@@ -41,12 +41,16 @@ CREATE DATABASE HollowCustomersSystem;
 ```
 2. Una vez creada la base de datos debe agregar las credenciales de acceso en el archivo `.env` del directorio raiz del proyecto:
 
-`DB_NAME=HollowCustomersSystem # Nombre de la base de datos creada en la plataforma del cliente.
+```python
+
+DB_NAME=HollowCustomersSystem # Nombre de la base de datos creada en la plataforma del cliente.
 DB_HOST=localhost # El localhost donde de la base de datos (es decir la maquina en la que corre la db)
 DB_USER=root # Los privilegios de usuarios
 DB_PASSWORD= # La ontraseña de la base de datos del cliente
 DB_PORT=3306 # El puerto en el que corre la base de datos
-`
+
+```
+
 
 3. Luego configurar dichas credenciales en el archivo `settings.py` alojada en la carpeta `config` de la siguiente forma:
 
