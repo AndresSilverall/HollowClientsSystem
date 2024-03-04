@@ -10,13 +10,17 @@ class TasksManagement(models.Model):
         ALTA = "A", "ALTA"
 
 
-    name = models.CharField("task name", max_length=20, null=False)
-    author = models.CharField("author", max_length=20, null=False)
-    description = models.TextField("description", max_length=50)
+    title = models.CharField("task title", max_length=20, null=False)
+    description = models.TextField("description", max_length=150)
     priority = models.CharField(max_length=10, choices=Priority.choices, default=Priority.NORMAL)
-    status = models.BooleanField("status", null=False, default=True)
-    created_at = models.DateField("date", null=True)
+    status = models.CharField(max_length=15, null=True, blank=True)
+    created_at = models.DateField("date", null=True, auto_now_add=True)
 
 
     def __str__(self):
-        return self.name
+        return self.title
+    
+
+    class Meta:
+        ordering = ["-created_at", "-title"]
+        verbose_name_plural = "Tasks"
