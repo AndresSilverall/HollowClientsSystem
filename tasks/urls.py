@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('tasks/', view=views.task_manager, name="tasks"),
+    path('delete/<str:pk>', view=views.delete_task, name="delete"),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

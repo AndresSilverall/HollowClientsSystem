@@ -8,29 +8,93 @@
 
 {% block content %}
 {{tasks.as_p}}
-<h3 class="lead"> Mis tareas</h3>
+
+<h3 class="lead text-center"> Mis tareas <i class="fas fa-tasks"></i></h3>
+
+<h3 class="text-end py-3">
+	<button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+		Agregar tarea <i class="far fa-plus-square"></i> 
+	</button>
+</h3>
+
+
+<div class="modal fade justify-content-center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar nueva tarea</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+         Cerrar
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis ad, pariatur possimus explicabo deleniti laborum et quidem harum cupiditate quam illum dolores! Impedit aut molestias temporibus natus esse rem autem.</p>
+				<form action="">
+					<div class="group-form">
+						<label for=""> Tarea</label>
+						<input class="form-control" type="text">
+						<input class="form-control" type="text">
+						<input class="form-control" type="text">
+					</div>
+				</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Agregar tarea</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="table-responsive">
-	<table id="example" class="table table-striped  table-hover" style="width:100%">
+	<table id="example" class="table table-striped  table-hover lead" style="width:100%">
 		<thead>
 				<tr>
+						<th></th>
 						<th>ID</th>
 						<th>Titulo</th>
 						<th>Descripcion</th>
 						<th>Prioridad</th>
 						<th>Estado</th>
 						<th>Creacion</th>
+						<th></th>
 				</tr>
 		</thead>
 		<tbody>
 			{% for task in tasks %}
 				<tr>
-					<td>{{ task }}</td>
-				</tr>
+					<td><i class="far fa-check-circle"></i></td>
+					<td>1</td>
+					<td>{{ task.title }}</td>
+					<td>{{ task.description }}</td>
+					<td>{{ task.priority }}</td>
+					<td>{{ task.status }}</td>
+					<td>{{ task.created_at }}</td>
+					<td>
+						<li class="dropdown">
+							<a class="text-decoration-none" id="Dropdown-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="fas fa-ellipsis-v" style="color: black;"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown-menu">
+								<li><a class="dropdown-item" href="{% url 'login' %}"><i class="far fa-edit"></i> Actualizar</a></li>
+								<li><a class="dropdown-item" href="{% url 'delete' task.id %}"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
+							</ul>
+						</li>
+					</td>
+					
+
 			{% endfor %}
+		</tbody>
 	</div>
 	
 </div>
 {% block child_js_below_files %} 
+	<script>
+		$('#myModal').on('shown.bs.modal', function () {
+		$('#myInput').trigger('focus')
+	})
+</script>
 		<script src="{% static 'js/table.js' %}"></script>
 		<script src="{% static 'js/dataTables.js' %}"></script>
 		<script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
