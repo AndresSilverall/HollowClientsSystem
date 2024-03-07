@@ -5,14 +5,15 @@ from django.db import models
 class TasksManagement(models.Model):
 
     class Priority(models.TextChoices):
-        NORMAL = "N", "NORMAL"
-        MEDIANA = "M", "MEDIANA"
-        ALTA = "A", "ALTA"
+        NORMAL = "NORMAL", "N"
+        MEDIANA = "MEDIANA", "M"
+        ALTA = "ALTA", "A"
 
 
-    title = models.CharField("task title", max_length=20, null=False)
-    description = models.TextField("description", max_length=150)
+    title = models.CharField("task title", max_length=50, null=False)
+    description = models.TextField("description", max_length=200)
     priority = models.CharField(max_length=10, choices=Priority.choices, default=Priority.NORMAL)
+    is_finished = models.BooleanField(default=False)
     status = models.CharField(max_length=15, null=True, blank=True)
     created_at = models.DateField("date", null=True, auto_now_add=True)
 

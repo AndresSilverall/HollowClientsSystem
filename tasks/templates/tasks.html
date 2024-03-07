@@ -7,41 +7,50 @@
 {% endblock %}
 
 {% block content %}
-{{tasks.as_p}}
 
-<h3 class="lead text-center"> Mis tareas <i class="fas fa-tasks"></i></h3>
+<h3 class="text-center display-6"> Mis tareas <i class="fas fa-tasks"></i></h3>
 
-<h3 class="text-end py-3">
+<div class="text-end justify-contend-end">
 	<button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
 		Agregar tarea <i class="far fa-plus-square"></i> 
 	</button>
-</h3>
+</div>
 
 
 <div class="modal fade justify-content-center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar nueva tarea</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-         Cerrar
-        </button>
-      </div>
       <div class="modal-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis ad, pariatur possimus explicabo deleniti laborum et quidem harum cupiditate quam illum dolores! Impedit aut molestias temporibus natus esse rem autem.</p>
-				<form action="">
-					<div class="group-form">
-						<label for=""> Tarea</label>
-						<input class="form-control" type="text">
-						<input class="form-control" type="text">
-						<input class="form-control" type="text">
-					</div>
-				</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Agregar tarea</button>
-      </div>
+				<h3 class="lead">Agregar tarea nueva</h3>
+					<form action="{% url 'add' %}" method="POST">
+						{% csrf_token %}
+						<div class="form-floating py-3">
+							<input class="form-control form-control-smmb-2" name="taskName" type="text" id="taskName">
+							<label class="form-label" for="taskName">Nombre de la tarea</label>
+						</div>
+						<div class="form-floating py-3">
+							<input class="form-control form-control-sm mb-2" name="taskDescription" type="text" id="taskDescription">
+							<label class="form-label" for="taskDescription">Descripcion</label>
+						</div>
+						<div class="form-floating py-3">
+							<input class="form-control form-control-sm mb-2" name="taskStatus" type="text" id="taskStatus">
+							<label class="form-label" for="taskStatus">Estado</label>
+						</div>
+						<div class="form-floating py-3">
+							<select class="form-select" aria-label="Default select example" name="taskPriority">
+								<option selected>Prioridad</option>
+								<option value="Normal">Normal</option>
+								<option value="Mediana">Mediana</option>
+								<option value="Alta">Alta</option>
+							</select>
+						</div>
+				
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-primary">Agregar tarea</button>
+						</div>
+					</form>
     </div>
   </div>
 </div>
@@ -82,13 +91,22 @@
 							</ul>
 						</li>
 					</td>
-					
-
 			{% endfor %}
 		</tbody>
 	</div>
+	<br>
+	<br>
+	{% if messages %}
+	{% for message in messages%}
+	<div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 350px;">
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		<h3 class="lead">Tarea agregada con exito!</h3>
+	</div>
+	{% endfor %}
+	{% endif %}
 	
 </div>
+
 {% block child_js_below_files %} 
 	<script>
 		$('#myModal').on('shown.bs.modal', function () {
