@@ -3,20 +3,20 @@
 {% block title %} Tareas {% endblock %}
 
 {% block extra_styles %}
-		<script src="{% static 'js/customizeDataTable.js' %}"></script>
+    <script src="{% static 'js/customizeDataTable.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
     <h3 class="text-center display-6"> Mis tareas <i class="fas fa-tasks"></i></h3>
-		{% if messages %}
-		{% for message in messages%}
-				<div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 350px;">
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-						<h3 class="lead">Tarea agregada con éxito!</h3>
-				</div>
-		{% endfor %}
-{% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 350px;">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <h3 class="lead">Tarea agregada con éxito!</h3>
+            </div>
+        {% endfor %}
+    {% endif %}
 
     <div class="text-end justify-contend-end">
         <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -28,7 +28,7 @@
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h3 class="lead">Agregar tarea nueva</h3>
+                    <h3 class="lead">Agregar tarea nueva <i class="fas fa-plus-circle"></i></h3>
                     <form action="{% url 'add' %}" method="POST">
                         {% csrf_token %}
                         <div class="form-floating py-3">
@@ -39,35 +39,35 @@
                             <input class="form-control form-control-sm mb-2" name="taskDescription" type="text" id="taskDescription">
                             <label class="form-label" for="taskDescription">Descripción</label>
                         </div>
-												<div class="form-floating py-3">
-							
-													<select class="form-select" aria-label="Default select example" name="taskPriority" id="priority">
-															<option selected></option>
-															<option value="Normal">Normal</option>
-															<option value="Mediana">Mediana</option>
-															<option value="Alta">Alta</option>
-													</select>
-													<label for="priority" class="form-label">Prioridad de la tarea</label>
-											</div>
+                        <div class="form-floating py-3">
+                            <select class="form-select" aria-label="Default select example" name="taskPriority" id="priority">
+                                <option selected></option>
+                                <option value="Normal">Normal</option>
+                                <option value="Mediana">Mediana</option>
+                                <option value="Alta">Alta</option>
+                            </select>
+                            <label for="priority" class="form-label">Prioridad de la tarea</label>
+                        </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-lg mb-2" name="taskStatus" type="text" id="taskStatus">
                             <label class="form-label" for="taskStatus">Estado</label>
                         </div>
-												<div class="form-floating py-3">
-													<input class="form-control form-control-lg mb-2" name="dueDate" type="date" id="dueDate">
-													<label class="form-label" for="dueDate">Fecha limite</label>
-											</div>
-											<button type="submit" class="btn btn-outline-primary">Agregar tarea</button>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
-                </form>
+                        <div class="form-floating py-3">
+                            <input class="form-control form-control-lg mb-2" name="dueDate" type="date" id="dueDate">
+                            <label class="form-label" for="dueDate">Fecha limite</label>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Agregar tarea</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="table-responsive">
-        <table id="example" class="table table-hover bg-gradient table-bordered" style="width:100%">
+        <table id="example" class="table table-hover" style="width:100%">
             <thead>
                 <tr>
                     <th></th>
@@ -76,8 +76,8 @@
                     <th>Descripción</th>
                     <th>Prioridad</th>
                     <th>Estado</th>
-                    <th>Fecha limite</th>
                     <th>Creación</th>
+                    <th>Fecha limite</th>
                     <th></th>
                 </tr>
             </thead>
@@ -88,46 +88,88 @@
                         <td>{{forloop.counter}}</td>
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
-												{% if task.priority == "Normal" %}
-                        		<td class="text-success">{{ task.priority }}</td>
-												{% elif task.priority == "Alta" %}
-														<td class="text-danger">{{ task.priority }}</td>
-												{% elif task.priority == "Mediana" %}
-														<td class="text-warning">{{ task.priority }}</td>
-												{% endif %}
+                        {% if task.priority == "Normal" %}
+                            <td class="text-success">{{ task.priority }}</td>
+                        {% elif task.priority == "Alta" %}
+                            <td class="text-danger">{{ task.priority }}</td>
+                        {% elif task.priority == "Mediana" %}
+                            <td class="text-warning">{{ task.priority }}</td>
+                        {% endif %}
                         <td>{{ task.status }}</td>
-                        <td>{{ task.due_date }}</td>
                         <td>{{ task.created_at }}</td>
+                        <td>{{ task.due_date }}</td>
                         <td>
                             <li class="dropdown list-unstyled">
                                 <a class="text-decoration-none" id="Dropdown-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v fa-1x" style="color: black;"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown-menu">
-                                    <li><a class="dropdown-item" href="{% url 'login' %}"><i class="far fa-edit"></i> Actualizar</a></li>
+																	<li><a class="dropdown-item" href=""><i class="far fa-check-square"></i> Finalizar tarea</a></li>
+                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskUpdate"><i class="far fa-edit"></i> Actualizar</a></li>
                                     <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskDelete"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
                                 </ul>
                             </li>
-														<div class="modal fade" id="TaskDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															<div class="modal-dialog">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="exampleModalLabel">Borrar tarea</h5>
-																		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																	</div>
-																	<div class="modal-body">
-																		<h3 class="lead">¿Seguro que deseas eliminar esta tarea?</h3>
-																	</div>
-																	<div class="modal-footer">
-																		<form action="{% url 'delete' task.id %}" method="post">
-																		{% csrf_token %}
-																		<button type="submit" class="btn btn-outline-danger">Eliminar</button>
-																	</form>		
-																	<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-																	</div>
-																</div>
-															</div>
-														</div>
+                            <div class="modal fade justify-content-center" id="TaskUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <h3 class="lead">Actualizar tarea <i class="far fa-edit"></i></h3>
+                                            <form action="{% url 'update' task.id %}" method="POST">
+                                                {% csrf_token %}
+                                                <div class="form-floating py-3">
+                                                    <input class="form-control form-control-sm mb-2" name="taskName" type="text" id="taskName">
+                                                    <label class="form-label" for="taskName">Nombre de la tarea</label>
+                                                </div>
+                                                <div class="form-floating py-3">
+                                                    <input class="form-control form-control-sm mb-2" name="taskDescription" type="text" id="taskDescription">
+                                                    <label class="form-label" for="taskDescription">Descripción</label>
+                                                </div>
+                                                <div class="form-floating py-3">
+                                                    <select class="form-select" aria-label="Default select example" name="taskPriority" id="priority">
+                                                        <option selected></option>
+                                                        <option value="Normal">Normal</option>
+                                                        <option value="Mediana">Mediana</option>
+                                                        <option value="Alta">Alta</option>
+                                                    </select>
+                                                    <label for="priority" class="form-label">Prioridad de la tarea</label>
+                                                </div>
+                                                <div class="form-floating py-3">
+                                                    <input class="form-control form-control-lg mb-2" name="taskStatus" type="text" id="taskStatus">
+                                                    <label class="form-label" for="taskStatus">Estado</label>
+                                                </div>
+                                                <div class="form-floating py-3">
+                                                    <input class="form-control form-control-lg mb-2" name="dueDate" type="date" id="dueDate">
+                                                    <label class="form-label" for="dueDate">Fecha limite</label>
+                                                </div>
+                                                <button type="submit" class="btn btn-outline-primary">Actualizar tarea</button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="TaskDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar tarea <i class="fas fa-backspace"></i></h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3 class="lead">¿Seguro que deseas eliminar esta tarea?</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="{% url 'delete' task.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                            </form>        
+                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 {% endfor %}
@@ -135,16 +177,16 @@
         </table>
     </div>
     
-{% block child_js_below_files %} 
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    })
-    </script>
-    <script src="{% static 'js/table.js' %}"></script>
-    <script src="{% static 'js/dataTables.js' %}"></script>
-    <script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
-    <script src="{% static 'js/hide_message.js' %}"></script>
-{% endblock %}
+    {% block child_js_below_files %} 
+        <script>
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
+        </script>
+        <script src="{% static 'js/table.js' %}"></script>
+        <script src="{% static 'js/dataTables.js' %}"></script>
+        <script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
+        <script src="{% static 'js/hide_message.js' %}"></script>
+    {% endblock %}
 
 {% endblock %}
