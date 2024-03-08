@@ -15,6 +15,7 @@ class TasksManagement(models.Model):
     priority = models.CharField(max_length=10, choices=Priority.choices, default=Priority.NORMAL)
     is_finished = models.BooleanField(default=False)
     status = models.CharField(max_length=15, null=True, blank=True)
+    due_date = models.DateField(null=True)
     created_at = models.DateField("date", null=True, auto_now_add=True)
 
 
