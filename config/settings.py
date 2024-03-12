@@ -120,6 +120,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
+# Redireccionar al login form cuando el usuario no este autenticado: para proteger las vistas.
+LOGIN_URL = 'login'
+
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 

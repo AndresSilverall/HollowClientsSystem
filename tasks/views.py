@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from tasks.models import TasksManagement
 from django.contrib import messages
 
 
 # Vista principal de Tareas
+@login_required(redirect_field_name="login")
 def task_manager(request):
     
     tasks = TasksManagement.objects.all()
@@ -15,14 +17,16 @@ def task_manager(request):
 
 
 # Vista para eliminar tarea de la base de datos.
-def delete_task(request, pk: None):  
+@login_required(redirect_field_name="login")
+def delete_task(request, pk: None): 
+    tasks = TasksManagement.objects.get(id=pk) 
     if request.method == "POST":  
-        tasks = TasksManagement.objects.get(id=pk)
         tasks.delete()
-    return redirect("tasks")
+    return render(request, "tasks.html")
 
 
 # Vista para agregar una tarea nueva.
+@login_required(redirect_field_name="login")
 def add_task(request):
     user_data = {
         "name": request.POST.get("taskName"),
@@ -46,6 +50,7 @@ def add_task(request):
 
 
 #Vista para actualizar una tarea
+@login_required(redirect_field_name="login")
 def update_task(request, pk: None):
     if request.method == "POST":
         tasks = TasksManagement.objects.get(id=pk)

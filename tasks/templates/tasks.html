@@ -13,16 +13,21 @@
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 350px;">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                <h3 class="lead">Tarea agregada con éxito!</h3>
+                Tarea agregada con éxito!
             </div>
         {% endfor %}
     {% endif %}
 
-    <div class="text-end justify-contend-end">
+    <div class="text-end justify-conten-end">
         <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Agregar tarea <i class="far fa-plus-square"></i> 
         </button>
     </div>
+		<div class="justify-content-center py-4">
+			<button type="button" class="btn btn-success btn-sm">
+					<a class="text-decoration-none text-white" href="{% url 'tasks' %}">Refrescar</a> <i class="fas fa-sync-alt"></i>
+			</button>
+	</div>
 
     <div class="modal fade justify-content-center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -72,6 +77,7 @@
                 <tr>
                     <th></th>
                     <th>#</th>
+                    <th>ID</th>
                     <th>Título</th>
                     <th>Descripción</th>
                     <th>Prioridad</th>
@@ -86,6 +92,7 @@
                     <tr>
                         <td><i class="far fa-check-circle"></i></td>
                         <td>{{forloop.counter}}</td>
+                        <td>{{ task.id}}</td>
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
                         {% if task.priority == "Normal" %}
@@ -109,6 +116,26 @@
                                     <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskDelete"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
                                 </ul>
                             </li>
+														<div class="modal fade" id="TaskDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															<div class="modal-dialog">
+																	<div class="modal-content">
+																			<div class="modal-header">
+																					<h5 class="modal-title" id="exampleModalLabel">Eliminar tarea <i class="fas fa-backspace"></i></h5>
+																					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																			</div>
+																			<div class="modal-body">
+																					<h3 class="lead">¿Seguro que deseas eliminar esta tarea?</h3>
+																			</div>
+																			<div class="modal-footer">
+																					<form action="{% url 'delete' task.id %}" method="POST">
+																							{% csrf_token %}
+																							<button type="submit" class="btn btn-outline-danger">Eliminar</button>
+																					</form>        
+																					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+																			</div>
+																	</div>
+															</div>
+													</div>
                             <div class="modal fade justify-content-center" id="TaskUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                                     <div class="modal-content">
@@ -147,26 +174,6 @@
                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
                                         </div>
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="TaskDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar tarea <i class="fas fa-backspace"></i></h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h3 class="lead">¿Seguro que deseas eliminar esta tarea?</h3>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action="{% url 'delete' task.id %}" method="post">
-                                                {% csrf_token %}
-                                                <button type="submit" class="btn btn-outline-danger">Eliminar</button>
-                                            </form>        
-                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
