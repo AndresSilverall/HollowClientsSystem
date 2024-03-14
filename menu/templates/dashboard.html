@@ -17,7 +17,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg bg-secondary bg-gradient" style="width: 100%;">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="{% url 'menu' %}"><img src="{% static 'images/logo_brand.png' %}" alt="logo_brand.png" width="250" height="40"></a>
+			<a class="navbar-brand" href="{% url 'dashboard' %}"><img src="{% static 'images/logo_brand.png' %}" alt="logo_brand.png" width="250" height="40"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -45,14 +45,14 @@
 		<div class="row flex-nowrap">
 			<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary bg-gradient">
 				<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-					<a href="{% url 'menu' %}"
+					<a href="{% url 'dashboard' %}"
 						class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 						<span class="fs-5 d-none d-sm-inline py-2"><img src="{% static 'images/logo.png' %}" alt="logo.png"
 								width="40"> Menu</span>
 					</a>
 					<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 						<li class="nav-item">
-							<a href="{% url 'menu' %}" class="nav-link align-middle px-0">
+							<a href="{% url 'dashboard' %}" class="nav-link align-middle px-0">
 								<span class="ms-1 d-none d-sm-inline text-white"><i class="fas fa-chalkboard-teacher fa-lg"></i> Dashboard</span>
 							</a>
 						</li>
@@ -104,6 +104,11 @@
 				<div class="container container-sm py-5">
 					{% block content %}
 						<h3 class="display-5 text-center mb-3"> Bienvenido {{ request.user }}!</h3>
+						<span class="badge bg-primary py-3">
+	
+							Numero de tasks: {{tasks}}
+	
+						</span>
 						<div class="row py-3">
 								<div class="col-sm-6">
 									<div class="card mb-3">
@@ -114,6 +119,22 @@
 										</div>
 									</div>
 								</div> <br>
+								<div class="col-sm-6">
+									<div class="card mb-3">
+										<div class="card-body">
+											<h3 class="card-title"> Tareas pendientes</h3>
+												Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem nesciunt quas provident eligendi omnis, suscipit atque optio temporibus, quibusdam quia maiores ipsa alias debitis fugit. Fuga non sed magnam provident.
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="card mb-3">
+										<div class="card-body">
+											<h3 class="card-title"> Tareas pendientes</h3>
+												Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem nesciunt quas provident eligendi omnis, suscipit atque optio temporibus, quibusdam quia maiores ipsa alias debitis fugit. Fuga non sed magnam provident.
+										</div>
+									</div>
+								</div>
 								<div class="col-sm-6">
 									<div class="card mb-3">
 										<div class="card-body">

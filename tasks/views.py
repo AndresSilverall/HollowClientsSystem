@@ -16,13 +16,13 @@ def task_manager(request):
     return render(request, "tasks.html", context=context)
 
 
-# Vista para eliminar tarea de la base de datos.
+# Vista para eliminar tarea de la base de datos por medio de su ID.
 @login_required(redirect_field_name="login")
-def delete_task(request, pk: None): 
-    tasks = TasksManagement.objects.get(id=pk) 
+def delete_task(request, pk): 
     if request.method == "POST":  
+        tasks = TasksManagement.objects.get(id=pk)
         tasks.delete()
-    return render(request, "tasks.html")
+    return redirect("tasks")
 
 
 # Vista para agregar una tarea nueva.

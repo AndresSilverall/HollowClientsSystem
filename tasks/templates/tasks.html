@@ -1,4 +1,4 @@
-{% extends "menu.html" %}
+{% extends "dashboard.html" %}
 {% load static %}
 {% block title %} Tareas {% endblock %}
 
@@ -77,7 +77,6 @@
                 <tr>
                     <th></th>
                     <th>#</th>
-                    <th>ID</th>
                     <th>Título</th>
                     <th>Descripción</th>
                     <th>Prioridad</th>
@@ -92,7 +91,6 @@
                     <tr>
                         <td><i class="far fa-check-circle"></i></td>
                         <td>{{forloop.counter}}</td>
-                        <td>{{ task.id}}</td>
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
                         {% if task.priority == "Normal" %}
@@ -105,6 +103,26 @@
                         <td>{{ task.status }}</td>
                         <td>{{ task.created_at }}</td>
                         <td>{{ task.due_date }}</td>
+												<div class="modal fade" id="TaskDelete" tabindex="-1" role="dialog" aria-labelledby="TaskDelete" aria-hidden="true">
+													<div class="modal-dialog">
+															<div class="modal-content">
+																	<div class="modal-header">
+																			<h5 class="modal-title" id="taskDelete">Eliminar tarea <i class="fas fa-backspace"></i></h5>
+																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																	</div>
+																	<div class="modal-body">
+																			<h3 class="lead">¿Seguro que deseas eliminar esta tarea: <b>'{{task.title}}'</b>? </h3>
+																	</div>
+																	<div class="modal-footer">
+																			<form action="{% url 'delete' task.id %}" method="POST">
+																					{% csrf_token %}
+																					<button type="submit" class="btn btn-outline-danger" data-bs-target="#TaskDelete" data-bs-toggle="modal">Eliminar</button>
+																			</form>        
+																			<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+																	</div>
+															</div>
+													</div>
+
                         <td>
                             <li class="dropdown list-unstyled">
                                 <a class="text-decoration-none" id="Dropdown-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -113,29 +131,9 @@
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown-menu">
 																	<li><a class="dropdown-item" href=""><i class="far fa-check-square"></i> Finalizar tarea</a></li>
                                     <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskUpdate"><i class="far fa-edit"></i> Actualizar</a></li>
-                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskDelete"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
+                                    <li><a class="dropdown-item" href="{% url "delete" task.id %}" data-bs-toggle="modal" data-bs-target="#TaskDelete"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
                                 </ul>
                             </li>
-														<div class="modal fade" id="TaskDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															<div class="modal-dialog">
-																	<div class="modal-content">
-																			<div class="modal-header">
-																					<h5 class="modal-title" id="exampleModalLabel">Eliminar tarea <i class="fas fa-backspace"></i></h5>
-																					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																			</div>
-																			<div class="modal-body">
-																					<h3 class="lead">¿Seguro que deseas eliminar esta tarea?</h3>
-																			</div>
-																			<div class="modal-footer">
-																					<form action="{% url 'delete' task.id %}" method="POST">
-																							{% csrf_token %}
-																							<button type="submit" class="btn btn-outline-danger">Eliminar</button>
-																					</form>        
-																					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-																			</div>
-																	</div>
-															</div>
-													</div>
                             <div class="modal fade justify-content-center" id="TaskUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                                     <div class="modal-content">
