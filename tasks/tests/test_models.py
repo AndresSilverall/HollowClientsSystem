@@ -4,8 +4,8 @@ from tasks.models import TasksManagement
 
 # Clase para testear la gestion de tareas de los usuarios - Unit Testing
 class TestTasksManagementModel(TestCase):
+    print("\n \n \n \t \t \t----------------------------------- Pruebas de software del modulo tasks - proyecto ADSO ---------------------------------")
     def setUp(self) -> None:
-
         # Tarea de prueba: 1
         self.new_task = TasksManagement.objects.create(
             title = "Actualizar registro del nuevo cliente.",
@@ -46,28 +46,42 @@ class TestTasksManagementModel(TestCase):
         self.new_task_three.save()
 
 
-
     def test_number_of_tasks(self):
         # El numero total de tareas agregadas a la base de datos: 3
         self.show_all_tasks = TasksManagement.objects.all()
-        self.assertEquals(self.show_all_tasks.count(), 3, msg="Verificar el numero de tareas agregadas a la base de datos.")
+        self.assertEquals(self.show_all_tasks.count(), 3, msg="Comprobar el numero de tareas agregadas a la base de datos.")
 
 
     def test_task_length(self):
-        # La longitud maxima para el campo "title" es de 50.
-        self.length_title = self.new_task.title
-        self.length_title
-        self.assertEquals(self.new_task, 37, msg="Comprobar que la longitud del titulo de la tarea es correcta." )
+        # La longitud maxima de caracteres para el campo "title" es de 50.
+        self.length_title = len(self.new_task.title)
+        self.assertEquals(self.length_title, 38, msg="Comprobar que la longitud del titulo de la tarea es correcta." )
         
 
     def test_task_length_fail(self):
-        pass
+        # hacer fallar la prueba cuando la longitud de caracteres del campo "title" sea mayor a 50.
+        self.length_title = len(self.new_task.title)
+        self.assertNotEquals(self.length_title, 51, msg="Comprobar que la longitud de caracteres del titulo sobrepasa los 50.")
   
 
-    """def test_get_task_by_id(self):
-        self.assertEquals(self.new_task_three.pk,3)"""
-        
+    def test_get_task_by_id(self):
+        # Obtener una tarea por medio de su ID.
+        get_task_by_id = TasksManagement.objects.get(id=self.new_task.id)
+        self.assertEquals(get_task_by_id, self.new_task)
         
 
-    """def test_length_of_a_task(self):
-        pass"""
+    def test_get_task_by_id_fail(self):
+        # Hacer fallar la prueba al obtener una tarea por un ID erroneo.
+        self.get_task_by_id = TasksManagement.objects.get(id=self.new_task.id)
+        self.assertNotEquals(self.new_task_three, self.get_task_by_id, msg="Comporbar que el ID no pertece a una tarea en especifico.") 
+
+
+    def test_description_task_label(self):
+        # Comporbar que el nombre de una columna es correcto.
+        self.get_task = TasksManagement.objects.get(pk=2)
+        self.get_label_name = self.get_task._meta.get_field("description").verbose_name
+        self.assertEquals(self.get_label_name, "description", msg="Comprobar que la columna de un registro es la correcta.")
+
+
+    def test_url_associated_to_the_model(self):
+        pass

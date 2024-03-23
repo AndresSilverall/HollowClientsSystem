@@ -16,7 +16,9 @@ django-jazzmin = "*"
 server = "python manage.py runserver 127.0.0.1:8000"
 make = "python manage.py makemigrations"
 migrate = "python manage.py migrate"
-test = "python manage.py test authentication -v 2"
+test-authentication = "python manage.py test authentication -v 2"
+test-tasks = "python manage.py test tasks -v 2"
+test-menu = "python manage.py test menu -v 2"
 
 [requires]
 python_version = "3.8"
