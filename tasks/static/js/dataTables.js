@@ -10382,7 +10382,7 @@
 				"orderableRemove": ": Activate to remove sorting",
 	
 				paginate: {
-					first: 'First',
+					first: 'Primero',
 					last: 'Last',
 					next: 'Next',
 					previous: 'Previous'

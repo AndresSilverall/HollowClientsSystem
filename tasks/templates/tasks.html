@@ -129,11 +129,12 @@
                                     <i class="fas fa-ellipsis-v fa-1x" style="color: black;"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown-menu">
-																	<li><a class="dropdown-item" href=""><i class="far fa-check-square"></i> Finalizar tarea</a></li>
+																	<li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#DoneTask{{ task.id }}"> <i class="far fa-check-square"></i> Finalizar tarea</a></li>
                                     <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskUpdate{{ task.id }}"><i class="far fa-edit"></i> Actualizar</a></li>
                                     <li><a class="dropdown-item" href="{% url "delete" task.id %}" data-bs-toggle="modal" data-bs-target="#TaskDelete{{ task.id }}"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
                                 </ul>
                             </li>
+
                             <div class="modal fade justify-content-center" id="TaskUpdate{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                                     <div class="modal-content">
@@ -175,6 +176,26 @@
                                     </div>
                                 </div>
                             </div>
+																											
+													<div class="modal fade" id="DoneTask{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="DoneTask" aria-hidden="true">
+														<div class="modal-dialog">
+																<div class="modal-content">
+																		<div class="modal-header">
+																				<h5 class="modal-title" id="DoneTask">Finalizar tarea <i class="fas fa-check"></i></h5>
+																				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																		</div>
+																		<div class="modal-body">
+																				<h3 class="lead">¿Seguro que deseas finalizar esta tarea: <b>'{{task.title}}'</b>? </h3>
+																		</div>
+																		<div class="modal-footer">
+																				<form action="{% url 'is_finished' task.id %}" method="POST">
+																						{% csrf_token %}
+																						<button type="submit" class="btn btn-outline-danger" data-bs-target="#DoneTask{{ task.id }}" data-bs-toggle="modal">Finalizar</button>
+																				</form>        
+																				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+																		</div>
+																</div>
+														</div>
                         </td>
                     </tr>
                 {% endfor %}
@@ -188,10 +209,12 @@
                 $('#myInput').trigger('focus')
             })
         </script>
+				
         <script src="{% static 'js/table.js' %}"></script>
         <script src="{% static 'js/dataTables.js' %}"></script>
         <script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
         <script src="{% static 'js/hide_message.js' %}"></script>
+        
     {% endblock %}
 
 {% endblock %}

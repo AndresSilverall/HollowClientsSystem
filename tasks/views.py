@@ -70,3 +70,15 @@ def update_task(request, pk: None):
     
 
     return redirect("tasks")
+
+
+
+# Vista para finalizar una tarea
+def task_is_finished(request, pk: None):
+    if request.method == "POST":
+        tasks = TasksManagement.objects.get(id=pk)
+        tasks.status = "Finalizada"
+        tasks.save()
+
+    return redirect("tasks")
+
