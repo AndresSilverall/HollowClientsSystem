@@ -67,17 +67,17 @@ class TestTasksManagementModel(TestCase):
     def test_get_task_by_id(self):
         # Obtener una tarea por medio de su ID.
         get_task_by_id = TasksManagement.objects.get(id=self.new_task.id)
-        self.assertEquals(get_task_by_id, self.new_task)
+        self.assertEquals(get_task_by_id, self.new_task, msg="Comprobar que el ID de una tarea es correcto.")
         
 
     def test_get_task_by_id_fail(self):
         # Hacer fallar la prueba al obtener una tarea por un ID erroneo.
         get_task_by_id = TasksManagement.objects.get(id=self.new_task.id)
-        self.assertNotEquals(self.new_task_three, get_task_by_id, msg="Comporbar que el ID no pertece a una tarea en especifico.") 
+        self.assertNotEquals(self.new_task_three, get_task_by_id, msg="Comprobar que el ID no pertenece a una tarea en especifico.") 
 
 
     def test_description_task_label(self):
         # Comporbar que el nombre de una columna es correcto.
         get_task = TasksManagement.objects.get(pk=2)
         get_label_name = get_task._meta.get_field("description").verbose_name
-        self.assertEquals(get_label_name, "description", msg="Comprobar que la columna de un registro es la correcta.")
+        self.assertEquals(get_label_name, "description", msg="Comprobar que el nombre de la columna de una tarea es la correcta.")

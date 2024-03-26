@@ -19,6 +19,7 @@ migrate = "python manage.py migrate"
 test-authentication = "python manage.py test authentication -v 2"
 test-tasks = "python manage.py test tasks -v 2"
 test-menu = "python manage.py test menu -v 2"
+test-sales_management = "python manage.py test sales_management -v 2"
 
 [requires]
 python_version = "3.8"

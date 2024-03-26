@@ -41,8 +41,8 @@ class TestUrls(TestCase):
 
     
     def test_url_of_delete_task(self):
-        self.assertEquals(self.delete_task.func, delete_task, msg="Comprobar que la vista 'update_task' tiene asociada su correcta ruta.")
+        self.assertEquals(self.delete_task.func, delete_task, msg="Comprobar que la vista 'delete_task' tiene asociada su correcta ruta.")
 
 
     def test_url_of_update_task(self):
-        self.assertEquals(self.update_task.func, update_task, msg="Comprobar que la vista 'delete_task' tiene asociada su correcta ruta.")
+        self.assertEquals(self.update_task.func, update_task, msg="Comprobar que la vista 'update_task' tiene asociada su correcta ruta.")
