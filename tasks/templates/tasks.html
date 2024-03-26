@@ -103,7 +103,7 @@
                         <td>{{ task.status }}</td>
                         <td>{{ task.created_at }}</td>
                         <td>{{ task.due_date }}</td>
-												<div class="modal fade" id="TaskDelete" tabindex="-1" role="dialog" aria-labelledby="TaskDelete" aria-hidden="true">
+												<div class="modal fade" id="TaskDelete{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="TaskDelete" aria-hidden="true">
 													<div class="modal-dialog">
 															<div class="modal-content">
 																	<div class="modal-header">
@@ -116,7 +116,7 @@
 																	<div class="modal-footer">
 																			<form action="{% url 'delete' task.id %}" method="POST">
 																					{% csrf_token %}
-																					<button type="submit" class="btn btn-outline-danger" data-bs-target="#TaskDelete" data-bs-toggle="modal">Eliminar</button>
+																					<button type="submit" class="btn btn-outline-danger" data-bs-target="#TaskDelete{{ task.id }}" data-bs-toggle="modal">Eliminar</button>
 																			</form>        
 																			<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
 																	</div>
@@ -130,15 +130,15 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown-menu">
 																	<li><a class="dropdown-item" href=""><i class="far fa-check-square"></i> Finalizar tarea</a></li>
-                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskUpdate"><i class="far fa-edit"></i> Actualizar</a></li>
-                                    <li><a class="dropdown-item" href="{% url "delete" task.id %}" data-bs-toggle="modal" data-bs-target="#TaskDelete"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
+                                    <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskUpdate{{ task.id }}"><i class="far fa-edit"></i> Actualizar</a></li>
+                                    <li><a class="dropdown-item" href="{% url "delete" task.id %}" data-bs-toggle="modal" data-bs-target="#TaskDelete{{ task.id }}"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
                                 </ul>
                             </li>
-                            <div class="modal fade justify-content-center" id="TaskUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade justify-content-center" id="TaskUpdate{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <h3 class="lead">Actualizar tarea <i class="far fa-edit"></i></h3>
+                                            <h3 class="lead">Actualizar tarea:  <b>'{{ task.title }}'</b> <i class="far fa-edit"></i></h3>
                                             <form action="{% url 'update' task.id %}" method="POST">
                                                 {% csrf_token %}
                                                 <div class="form-floating py-3">
