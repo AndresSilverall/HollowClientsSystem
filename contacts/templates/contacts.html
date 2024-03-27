@@ -4,106 +4,94 @@
 
 
 {% block content %}
-<h3 class="text-center lead"> Gestionar clientes y campañas de marketing <i class="fas fa-mail-bulk"></i></h3>
+<h3 class="text-center lead"> Gestionar clientes y campañas de marketing <i class="fas fa-users"></i></h3>
 
-<div class=" text-end justify-content-end py-5">
-    <button class="btn btn-outline-primary btn-sm"> Crear un contacto <i class="fas fa-address-book"></i></button>
+<div class=" text-end justify-content-end">
+    <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"> Crear un contacto <i class="fas fa-address-book"></i></button>
+</div>
+
+<div class="justify-content-center py-4">
+    <a class="text-decoration-none text-white btn btn-success btn-sm" href="{% url 'contacts' %}">Refrescar <i class="fas fa-sync-alt"></i></a> 
+</div>
+
+<div class="modal fade justify-content-center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 class="lead">Agregar un nuevo cliente <i class="fas fa-address-book"></i></h3>
+                <form action="{% url 'add' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-floating py-3">
+                        <input class="form-control form-control-sm mb-2" name="taskName" type="text" id="taskName">
+                        <label class="form-label" for="taskName">Nombre del cliente </label>
+                    </div>
+                    <div class="form-floating py-3">
+                        <input class="form-control form-control-sm mb-2" name="taskDescription" type="text" id="taskDescription">
+                        <label class="form-label" for="taskDescription">Correo</label>
+                    </div>
+                    <div class="form-floating py-3">
+                        <input class="form-control form-control-sm mb-2" name="taskDescription" type="text" id="taskDescription">
+                        <label class="form-label" for="taskDescription">Numero de telefono</label>
+                    </div>
+                    <div class="form-floating py-3">
+                        <input class="form-control form-control-lg mb-2" name="taskStatus" type="text" id="taskStatus" readonly value="Sin campaña">
+                        <label class="form-label" for="taskStatus">Campaña</label>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary">Agregar Cliene</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="table-responsive">
-    <table id="example" class="table table-bordered py-5">
+    <table id="example" class="table table-borderless table-hover py-5">
         <thead>
             <tr>
-                <th> ID </th>
+                <th></th>
+                <th> # </th>
                 <th> Cliente</th>
-                <th> Correo</th>
+                <th> Direccion </th>
+                <th> Cargo </th>
+                <th> Interaccion </th>
+                <th> Preferencia</th>
+                <th> Notas </th>
+                <th> Campaña </th>
+                <th> Email</th>
                 <th> Numero</th>
-                <th> Campaña</th>
-                <th> Activo</th>
-                <th> Accion</th>
+                <th> Estado</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <td><i class="far fa-check-circle"></i></td>
                 <td>1</td>
-                <td>XYZ Inc.</td>
-                <td>xyz@example.com</td>
-                <td>9876543210</td>
-                <td>Otoño 2024</td>
-                <td>Sí</td>
-                <td>Consulta</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>ABC Co.</td>
-                <td>abc@example.com</td>
-                <td>1234567890</td>
-                <td>Verano 2024</td>
-                <td>Prueba</td>
-                <td>Prueba</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>SuperElectronics</td>
-                <td>info@superelectronics.com</td>
-                <td>5551234567</td>
-                <td>Black Friday</td>
-                <td>No</td>
-                <td>Registro</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>FashionZone</td>
-                <td>info@fashionzone.com</td>
-                <td>3335557777</td>
-                <td>Primavera 2024</td>
-                <td>Sí</td>
-                <td>Compra</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>HealthyLife</td>
-                <td>support@healthylife.com</td>
-                <td>1112223333</td>
-                <td>Año Nuevo</td>
-                <td>No</td>
-                <td>Consulta</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>TechSavvy</td>
-                <td>sales@techsavvy.com</td>
-                <td>6669998888</td>
-                <td>Rebajas de Verano</td>
-                <td>Sí</td>
-                <td>Compra</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>CosmoBeauty</td>
-                <td>info@cosmobeauty.com</td>
-                <td>4447779999</td>
-                <td>Día de la Madre</td>
-                <td>No</td>
-                <td>Registro</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>FoodDelights</td>
-                <td>orders@fooddelights.com</td>
-                <td>2224446666</td>
-                <td>Navidad</td>
-                <td>Sí</td>
-                <td>Compra</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>SportsWorld</td>
-                <td>info@sportsworld.com</td>
-                <td>7771113333</td>
-                <td>Ofertas de Invierno</td>
-                <td>No</td>
-                <td>Consulta</td>
+                <td>Monda anime</td>
+                <td>Compañía123</td>
+                <td>Plaza Ficticia 789</td>
+                <td>Director de marketing</td>
+                <td>Correo electrónico</td>
+                <td>Correo electrónico</td>
+                <td>Acuerdo de contrato firmado</td>
+                <td>Campaña de cierre de ventas</td>
+                <td>info@compania123.com</td>
+                <td>555-456-7890</td>
+                <td>
+                    <li class="dropdown list-unstyled">
+                    <a class="text-decoration-none" id="Dropdown-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bars justify-content-center"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown-menu">
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#DoneTask"> <i class="fas fa-mail-bulk"></i> Agregar campaña</a></li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskUpdate"><i class="far fa-edit"></i> Actualizar</a></li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#TaskDelete"><i class="fas fa-trash-alt"></i> Eliminar</a></li>
+                    </ul>
+                    </li>
+                </td>
             </tr>
         </tbody>
     </table>
