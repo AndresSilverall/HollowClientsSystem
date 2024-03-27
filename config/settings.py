@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     'sales_management',
     'tasks',
     'polls',
+    'contacts',
 ]
 
 

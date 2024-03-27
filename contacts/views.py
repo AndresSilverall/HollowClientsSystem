@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+# Vista para gestionar los contactos y crear campañas de marketing.
+def contact_management(request):
+    return render(request, "contacts.html")

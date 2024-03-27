@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include("authentication.urls")),
     path('', include("menu.urls")),
     path('', include("tasks.urls")),
+    path('', include("contacts.urls")),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

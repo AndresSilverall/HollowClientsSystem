@@ -1,0 +1,127 @@
+{% extends "dashboard.html" %}
+{% load static %}
+<title>{% block title%} Clientes {% endblock %}</title>
+
+
+{% block content %}
+<h3 class="text-center lead"> Gestionar clientes y campañas de marketing <i class="fas fa-mail-bulk"></i></h3>
+
+<div class=" text-end justify-content-end py-5">
+    <button class="btn btn-outline-primary btn-sm"> Crear un contacto <i class="fas fa-address-book"></i></button>
+</div>
+
+<div class="table-responsive">
+    <table id="example" class="table table-bordered py-5">
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Cliente</th>
+                <th> Correo</th>
+                <th> Numero</th>
+                <th> Campaña</th>
+                <th> Activo</th>
+                <th> Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>XYZ Inc.</td>
+                <td>xyz@example.com</td>
+                <td>9876543210</td>
+                <td>Otoño 2024</td>
+                <td>Sí</td>
+                <td>Consulta</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>ABC Co.</td>
+                <td>abc@example.com</td>
+                <td>1234567890</td>
+                <td>Verano 2024</td>
+                <td>Prueba</td>
+                <td>Prueba</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>SuperElectronics</td>
+                <td>info@superelectronics.com</td>
+                <td>5551234567</td>
+                <td>Black Friday</td>
+                <td>No</td>
+                <td>Registro</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>FashionZone</td>
+                <td>info@fashionzone.com</td>
+                <td>3335557777</td>
+                <td>Primavera 2024</td>
+                <td>Sí</td>
+                <td>Compra</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>HealthyLife</td>
+                <td>support@healthylife.com</td>
+                <td>1112223333</td>
+                <td>Año Nuevo</td>
+                <td>No</td>
+                <td>Consulta</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>TechSavvy</td>
+                <td>sales@techsavvy.com</td>
+                <td>6669998888</td>
+                <td>Rebajas de Verano</td>
+                <td>Sí</td>
+                <td>Compra</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>CosmoBeauty</td>
+                <td>info@cosmobeauty.com</td>
+                <td>4447779999</td>
+                <td>Día de la Madre</td>
+                <td>No</td>
+                <td>Registro</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>FoodDelights</td>
+                <td>orders@fooddelights.com</td>
+                <td>2224446666</td>
+                <td>Navidad</td>
+                <td>Sí</td>
+                <td>Compra</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>SportsWorld</td>
+                <td>info@sportsworld.com</td>
+                <td>7771113333</td>
+                <td>Ofertas de Invierno</td>
+                <td>No</td>
+                <td>Consulta</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% block child_js_below_files %} 
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+            
+    <script src="{% static 'js/table.js' %}"></script>
+    <script src="{% static 'js/dataTables.js' %}"></script>
+    <script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
+    <script src="{% static 'js/hide_message.js' %}"></script>
+
+{% endblock %}
+
+
+{% endblock %}

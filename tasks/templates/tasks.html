@@ -8,7 +8,7 @@
 
 {% block content %}
 
-    <h3 class="text-center display-6"> Mis tareas <i class="fas fa-tasks"></i></h3>
+    <h3 class="text-center lead"> Gestionar tareas <i class="fas fa-tasks"></i></h3>
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 350px;">
@@ -100,6 +100,7 @@
                         {% elif task.priority == "Mediana" %}
                             <td class="text-warning">{{ task.priority }}</td>
                         {% endif %}
+												
                         <td>{{ task.status }}</td>
                         <td>{{ task.created_at }}</td>
                         <td>{{ task.due_date }}</td>
