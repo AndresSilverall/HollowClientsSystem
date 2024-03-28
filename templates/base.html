@@ -52,6 +52,7 @@
 						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
 						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
 					</div>
 					<div class="carousel-inner">
 						<div class="carousel-item active">
@@ -73,6 +74,13 @@
 							<div class="carousel-caption d-none d-md-block">
 								<h5>Mejora las relaciones con la empresa</h5>
 								<p class="lead">La empresa y sus clientes mantienen una estrecha elación  de las diferentes actividades.</p>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img src="{% static 'images/carousel_four.png' %}" class="d-block w-100" alt="carousel_four.png">
+							<div class="carousel-caption d-none d-md-block">
+								<h5><a class="btn btn-primary" href="{% url 'register' %}">Registrate ya</a></h5>
+								<p class="lead">Registrate para acceder a nuestros servicios.</p>
 							</div>
 						</div>
 					</div>
@@ -98,10 +106,10 @@
 								</div>
 								<div class="col-md-8">
 									<div class="card-header lead">
-										Atención al cliente
+										Administración de los contactos
 									</div>
 									<div class="card-body">
-										<p class="card-text">Brindamos un sistema de atención al cliente en la que se resolverá las problematicas que tengan los clientes, buscamos satisfacer sus principales necesidades.</p>
+										<p class="card-text">Brindamos un sistema para administrar la información de los clientes en nuestras bases de datos, con el fin de ofrecerles nuestros productos y servicios. </p>
 									</div>
 								</div>
 							</div>
@@ -115,10 +123,10 @@
 								</div>
 								<div class="col-md-8">
 									<div class="card-header lead">
-										Gestión de productos
+										Gestión de productos y servicios
 									</div>
 									<div class="card-body">
-										<p class="card-text">Los clientes podrán gestionar los productos adquiridos de la empresa por medio de carritos de compras y hacer su respectivo seguimiento a dichos productos.</p>
+										<p class="card-text">A través de un control de inventario permite a la empresa gestionar los productos solictados por los clientes, hace un seguimiento a los registros de los productos en stock.</p>
 									</div>
 								</div>
 							</div>
@@ -131,10 +139,11 @@
 								</div>
 								<div class="col-md-8">
 									<div class="card-header lead">
-										Asignación de Tasks
+										Gestión de Tasks
 									</div>
 									<div class="card-body">
-										<p class="card-text">Los clientes o la empresa podrán llevar a cabo diferentes asignaciones de tareas en la que se pretende llevar un control de las diferentes actividades.</p>
+										<p class="card-text">
+											La gestión de tareas permite la creación y asignación de actividades entre los miembros del equipo para llevar un control de las relaciones entre cliente-empresa.</p>
 									</div>
 								</div>
 							</div>
@@ -143,14 +152,14 @@
 						<div class="card mb-3" style="max-width: 540px;">
 							<div class="row g-0">
 								<div class="col-md-4">
-									<img src="{% static 'images/inventory_control.jpg' %}" class="img-fluid rounded-start" alt="inventory_control.jpg">
+									<img src="{% static 'images/marketing.avif' %}" class="img-fluid rounded-start" alt="marketing.avif">
 								</div>
 								<div class="col-md-8">
 									<div class="card-header lead">
-										Control de inventario
+										Campañas de marketing
 									</div>
 									<div class="card-body">
-										<p class="card-text">El control de inventario permite a la empresa gestionar las existencias que almacena, abarca el registro de todos aquellos movimientos de almacenamiento de materia prima.</p>
+										<p class="card-text">Se generan campañas de marketing para cada uno de nuestros clientes a través de los distintos canales de comunicación, con el fin de ofrecer nuestros productos y servicios.</p>
 									</div>
 								</div>
 							</div>
