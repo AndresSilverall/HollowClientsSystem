@@ -92,11 +92,11 @@
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
                         {% if task.priority == "Normal" %}
-                            <td class="text-success">{{ task.priority }}</td>
+                           <td><span class="badge rounded-pill bg-success">{{ task.priority }}</span></td>
                         {% elif task.priority == "Alta" %}
-                            <td class="text-danger">{{ task.priority }}</td>
+                            <td><span class="badge rounded-pill bg-danger">{{ task.priority }}</span></td>
                         {% elif task.priority == "Mediana" %}
-                            <td class="text-warning">{{ task.priority }}</td>
+                            <td><span class="badge rounded-pill bg-warning">{{ task.priority }}</span></td>
                         {% endif %}
 												
                         <td>{{ task.status }}</td>
