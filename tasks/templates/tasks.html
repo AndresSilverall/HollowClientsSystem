@@ -11,7 +11,7 @@
     <h3 class="text-center lead"> Gestionar tareas <i class="fas fa-tasks"></i></h3>
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 350px;">
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" style="width: 350px;">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 Tarea agregada con éxito!
             </div>
@@ -120,12 +120,12 @@
 																			<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
 																	</div>
 															</div>
-													</div>
+												</div>
 
                         <td>
                             <li class="dropdown list-unstyled">
                                 <a class="text-decoration-none" id="Dropdown-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v fa-1x" style="color: black;"></i>
+																	<i class="fas fa-bars justify-content-center"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown-menu">
 																	<li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#DoneTask{{ task.id }}"> <i class="far fa-check-square"></i> Finalizar tarea</a></li>
