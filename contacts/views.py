@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.conf import settings
 from contacts.models import CustomersManagement
+from django.core.mail import send_mail
 
 
 # Vista para gestionar los contactos y crear campañas de marketing.
@@ -75,4 +77,11 @@ def delete_customer(request, pk):
 
 # Vista para crear una campaña de marketing a un cliente
 def send_marketing_campaing(request):
-    pass
+    if request.method == "POST":
+        subject = request.POST.get("emailSubject")
+        message = request.POST.get("emailMessage")
+        email_from = settings.EMAIL_HOST_USER
+        recipient = [request.POST.get("emailUser")]
+        print(subject, message, email_from, recipient)
+        send_mail(subject, message, email_from,recipient, fail_silently=False)
+    return redirect("contacts")
