@@ -83,36 +83,42 @@
         </div>
     </div>
 
-    <div class="table-responsive">
-        <table id="example" class="table table-bordered" style="width: 100%;">
+    <div class="table-responsive justify-content-center">
+        <table id="example" class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>Cliente</th>
-                    <th>Dirección</th>
-                    <th>Cargo</th>
-                    <th>Interacción</th>
-                    <th>Preferencia</th>
-                    <th>Notas</th>
-                    <th>Campaña</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Estado</th>
-                    <th></th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Interacción</th>
+                    <th scope="col">Preferencia</th>
+                    <th scope="col">Notas</th>
+                    <th scope="col">Campaña</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 {% for customer in customers %}
-                    <tr>
+                    <tr class="text-justify">
                         <td>{{ customer.customer }}</td>
                         <td>{{ customer.address }}</td>
                         <td>{{ customer.position }}</td>
                         <td>{{ customer.interaction }}</td>
                         <td>{{ customer.preference }}</td>
                         <td>{{ customer.notes }}</td>
-                        <td>{{ customer.campaing }}</td>
+												{% if customer.campaing == "Sin campaña" %}
+                        	<td><span class="badge rounded-pill bg-danger">{{ customer.campaing }}</span></td>
+												{% elif customer.campaing == "Campaña agregada" %}
+													<td><span class="badge rounded-pill bg-success">{{ customer.campaing }}</span></td>
+												{% endif %}
                         <td>{{ customer.email }}</td>
                         <td>{{ customer.phone_number }}</td>
-                        <td>{{ customer.status }}</td>
+												{% if customer.status == "Activo" %}
+                        	<td><span class="badge rounded-pill bg-success">{{ customer.status }}</span></td>
+												{% endif %}
 												<div class="modal fade" id="deleteContact{{ customer.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteContact" aria-hidden="true">
 													<div class="modal-dialog">
 															<div class="modal-content">
@@ -217,7 +223,6 @@
                 $('#myInput').trigger('focus')
             });
         </script>
-
         <script src="{% static 'js/table.js' %}"></script>
         <script src="{% static 'js/dataTables.js' %}"></script>
         <script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>

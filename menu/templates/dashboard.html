@@ -15,7 +15,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg bg-secondary bg-gradient" style="width: 100%;">
+	<nav class="navbar navbar-expand-lg navbar-expand-xl navbar-expand-md  bg-secondary bg-gradient" style="width:100%;">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="{% url 'dashboard' %}"><img src="{% static 'images/logo_brand.png' %}" alt="logo_brand.png" width="250" height="40"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,8 +43,8 @@
 	</nav>
 	<div class="container-fluid">
 		<div class="row flex-nowrap">
-			<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary bg-gradient">
-				<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+			<div class="col-auto col-md-2 col-xl-2 px-sm-2 px-0 bg-secondary bg-gradient" style="width: 185px;">
+				<div class="d-flex flex-column align-items-center align-items-sm-start px-0 pt-2 text-white min-vh-100">
 					<a href="{% url 'dashboard' %}"
 						class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 						<span class="fs-5 d-none d-sm-inline py-2"><img src="{% static 'images/logo.png' %}" alt="logo.png"
@@ -101,7 +101,7 @@
 				</div>
 			</div>
 			<div class="col">
-				<div class="container container-sm py-5">
+				<div class="container py-5" style="width: 100%;">
 					{% block content %}
 					
 
