@@ -9,7 +9,7 @@ urlpatterns = [
     path('addContact/', view=views.add_contact, name="add_contact"),
     path('deleteContact/<str:pk>', view=views.delete_customer, name="delete_contact"),
     path('updateContact/<str:pk>', view=views.update_customer, name="update_contact"),
-    path('marketingCampaing/', view=views.send_marketing_campaing, name="marketing_campaing"),
+    path('marketingCampaing/<str:pk>', view=views.send_marketing_campaing, name="marketing_campaing"),
     
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
