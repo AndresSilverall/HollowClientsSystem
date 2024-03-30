@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from smtplib import SMTPException
 from authentication.forms import CreateNewUser, ChangePasswordForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash #keep it the user session active
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 
 
 # Vista del Home Page
@@ -93,4 +98,24 @@ def about_us(request):
 
 # Vista para acceder al formulario de contacto
 def contact_us(request):
+    try:
+        if request.method == "POST":
+            subject = request.POST.get("subject")
+            body_message = request.POST.get("message")
+            from_email = settings.EMAIL_HOST_USER
+            send_message_to = [request.POST.get("email")]
+    
+            message = EmailMultiAlternatives(
+                subject,
+                body_message,
+                from_email,
+                send_message_to
+            )
+            
+            message.send()
+            messages.success(request, "Mensaje enviado con exito!")
+
+    except SMTPException as e:
+        messages.error(request, "Ocurrio un error al enviar el mensaje: ", e)
+
     return render(request, "contact_us.html")
