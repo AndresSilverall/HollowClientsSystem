@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include("menu.urls")),
     path('', include("tasks.urls")),
     path('', include("contacts.urls")),
+    path('', include("tickets.urls")),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
