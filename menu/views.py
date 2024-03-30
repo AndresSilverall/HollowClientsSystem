@@ -12,11 +12,15 @@ def dashboard(request):
 
     # Estadisticas de la gestion de contactos y campañas de marketing
     customers = CustomersManagement.objects.count()
-    customers_marketing_campaings = CustomersManagement.objects.filter(campaing="Sin campaña").count()
+    active_customers = CustomersManagement.objects.filter(status="Activo").count()
+    customers_marketing_campaings = CustomersManagement.objects.filter(campaing="Campaña agregada").count()
+    no_marketing_campaings = CustomersManagement.objects.filter(campaing="Sin campaña").count()
     context = {
         "tasks": tasks,
         "is_finished": tasks_done,
         "customers": customers,
-        "customers_campaing": customers_marketing_campaings
+        "active_customers": active_customers,
+        "customers_campaing": customers_marketing_campaings,
+        "no_marketing_campaing": no_marketing_campaings
     }
     return render(request, "dashboard.html", context=context)

@@ -93,7 +93,10 @@ def send_marketing_campaing(request, pk: None):
             html_message = render_to_string("social_media_marketing.html")
 
         elif request.POST.get("selectNewCampaing") == "Temporada_navideña":
-                html_message = render_to_string("christmas_season_marketing.html")
+            html_message = render_to_string("christmas_season_marketing.html")
+        
+        elif request.POST.get("selectNewCampaing") == "Nuevo_cliente":
+            html_message = render_to_string("welcome.html", context={"customer": customer})
 
             
         subject = request.POST.get("emailSubject")

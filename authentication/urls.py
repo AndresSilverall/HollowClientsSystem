@@ -11,6 +11,7 @@ urlpatterns = [
     path('change_password/', view=views.restart_password, name="change_password"),
     path('logout/', view=views.user_logout, name="logout"),
     path('about/', view=views.about_us, name="about"),
+    path('contact/', view=views.contact_us, name="contact_us"),
     
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

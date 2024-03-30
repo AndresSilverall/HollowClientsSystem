@@ -89,3 +89,8 @@ def user_logout(request):
 # Vista sobre informacion de la App
 def about_us(request):
     return render(request, "about_us.html")
+
+
+# Vista para acceder al formulario de contacto
+def contact_us(request):
+    return render(request, "contact_us.html")
