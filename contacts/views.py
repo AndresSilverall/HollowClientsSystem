@@ -79,23 +79,41 @@ def delete_customer(request, pk):
 
 # Vista para crear una campaña de marketing a un cliente
 def send_marketing_campaing(request, pk: None):
-    customer = CustomersManagement.objects.get(id=pk)
+  
     if request.method == "POST":
+        customer = CustomersManagement.objects.get(id=pk)
+        html_message = ""
+        if request.POST.get("selectNewCampaing") == "Black_friday":
+            html_message = render_to_string("black_friday_marketing.html")
+
+        elif request.POST.get("selectNewCampaing") == "Servicios_digitales":
+            html_message = render_to_string("digital_platform_marketing.html")
+
+        elif request.POST.get("selectNewCampaing") == "Redes_sociales":
+            html_message = render_to_string("social_media_marketing.html")
+
+        elif request.POST.get("selectNewCampaing") == "Temporada_navideña":
+                html_message = render_to_string("christmas_season_marketing.html")
+
+            
         subject = request.POST.get("emailSubject")
-        email_from = settings.EMAIL_HOST_USER
         recipient = [request.POST.get("emailUser")]
-        html_message = render_to_string("social_media_marketing.html")
+
+
+        email_from = settings.EMAIL_HOST_USER
         plain_message = strip_tags(html_message)
 
         message = EmailMultiAlternatives(
-            subject,
-            plain_message,
-            email_from,
-            recipient
-        )
+                    subject,
+                    plain_message,
+                    email_from,
+                    recipient
+                )
 
         message.attach_alternative(html_message, "text/html")
         message.send()
         customer.campaing = "Campaña agregada"
         customer.save()
+        messages.success(request, "Campañada creada con exito!")
+
     return redirect("contacts")
