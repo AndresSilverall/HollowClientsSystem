@@ -7,5 +7,51 @@
 {% endblock %}
 
 {% block content %}
-<h3 class="text-center lead"> Panel de generador de tickets <i class="fas fa-headset"></i></h3>
+    <h3 class="text-center lead"> Panel de generador de tickets <i class="fas fa-ticket-alt"></i></h3>
+
+    <div class="d-flex align-items-center justify-content-center py-5" style="gap: 0.9rem;" >
+        <div class="p-4 border">
+            <h2 class="lead">Total de tickets</h2>
+        </div>
+        <div class="p-4 border">
+            <h2 class="lead">Tickets cerrados</h2>
+        </div>
+        <div class="p-4 border">
+            <h2 class="lead">Tickets abiertos</h2>
+        </div>
+        <div class="p-4 border">
+            <h2 class="lead">Tickets pendientes</h2>
+        </div>
+        <div class="p-4 border">
+            <h2 class="lead">Tickets resueltos</h2>
+        </div>
+    </div>
+
+    <a class="btn btn-outline-secondary" href="{% url "ticket_info" %}"><i class="fas fa-plus"></i> Crear un nuevo ticket</a>
+		<div class="table-responsive py-5">
+			<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Cargo</th>
+                <th>Solicitud</th>
+                <th>Prioridad</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+            <tbody>
+                <tr>
+                    <td> Andres</td>
+                    <td> DevOps</td>
+                    <td> Alta</td>
+                    <td> Pendiente</td>
+                </tr>
+            </tbody>
+    </table>
+		</div>
+
+    {% block child_js_below_files %} 
+        <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+
 {% endblock %}

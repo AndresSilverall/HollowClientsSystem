@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include("tasks.urls")),
     path('', include("contacts.urls")),
     path('', include("tickets.urls")),
+    path('', include("inventory.urls")),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -107,7 +107,7 @@
             <div class="col">
                 <div class="container py-5" style="width: 100%;">
                     {% block content %}
-                    <h3 class="display-5 text-center mb-3"> Bienvenido {{ request.user }}!</h3>
+                    <h3 class="display-6 text-center mb-5">¡Bienvenido {{ request.user }}! al panel de estadísticas <i class="far fa-chart-bar"></i></h3>
                     <div class="row py-3">
                         <div class="col-sm-6">
                             <div class="card mb-3">
@@ -174,13 +174,12 @@
                             </div>
                         </div>
                     </div>
-                    {% endblock %}
                 </div>
             </div>
         </div>
     </div>
-    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     {% block child_js_below_files %}
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <!-- Script ara las estadisticas de tasks-->
     <script>
         const ctx = document.getElementById('myChart');
@@ -232,6 +231,9 @@
             }
         });
     </script>
+
+    {% endblock %}
     {% endblock %}
 </body>
 </html>
+
