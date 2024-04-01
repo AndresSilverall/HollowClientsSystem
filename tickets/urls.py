@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     path("tickets/", views.tickets_management, name="tickets"),
-    path("newTicket/", views.generate_ticket_form, name="ticket_info"),
+    path("newTicket/", views.generate_ticket_form, name="generate_ticket"),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
