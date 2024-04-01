@@ -19,13 +19,13 @@
 
     <div class="d-flex align-items-center justify-content-center py-5" style="gap: 0.9rem;" >
         <div class="p-4 border">
-            <h2 class="lead">Total de tickets</h2>
+            <h3 class="lead"> Total de tickets: {{all_tickets_created}}</h3>
         </div>
         <div class="p-4 border">
-            <h2 class="lead">Tickets cerrados</h2>
+            <h2 class="lead">Tickets cerrados: {{closed_tickets}}</h2>
         </div>
         <div class="p-4 border">
-            <h2 class="lead">Tickets abiertos</h2>
+            <h2 class="lead">Tickets abiertos: {{open_tickets}}</h2>
         </div>
         <div class="p-4 border">
             <h2 class="lead">Tickets pendientes</h2>
@@ -37,7 +37,7 @@
 
     <a class="btn btn-outline-secondary" href="{% url 'generate_ticket' %}"><i class="fas fa-plus"></i> Crear un nuevo ticket</a>
 		<div class="table-responsive py-5">
-			<table class="table table-bordered">
+			<table class="table table-bordered" style="width: 100%;">
         <thead>
             <tr>
                 <th>Asunto</th>
@@ -46,6 +46,7 @@
                 <th>Agente</th>
                 <th>Descripción</th>
                 <th>Prioridad</th>
+                <th>Estado</th>
                 <th>Tipo</th>
                 <th>Canal</th>
                 <th>Fecha</th>
@@ -60,12 +61,17 @@
 									<td>{{ticket.asigned_to}}</td>
 									<td>{{ticket.agent}}</td>
 									<td>{{ticket.description}}</td>
-									{% if ticket.priority == "NORMAL" %}
+									{% if ticket.priority == "Normal" %}
 											<td><span class="badge rounded-pill bg-success">{{ticket.priority}}</span></td>
-									{% elif ticket.priority == "MEDIANA" %}
-											<td><span class="badge rounded-pill bg-warning">{{ ticket.priority }}</span></td>
-									{% elif ticket.priority == "ALTA" %}
-											<td><span class="badge rounded-pill bg-danger">{{ ticket.priority }}</span></td>
+									{% elif ticket.priority == "Mediana" %}
+											<td><span class="badge rounded-pill bg-warning">{{ticket.priority}}</span></td>
+									{% elif ticket.priority == "Alta" %}
+											<td><span class="badge rounded-pill bg-danger">{{ticket.priority}}</span></td>
+									{% endif %}
+									{% if ticket.status == "Abierto" %}
+										<td><span class="badge rounded-pill bg-danger">{{ticket.status}}</span></td>
+									{% elif ticket.status == "Cerrado" %}
+										<td><span class="badge rounded-pill bg-success">{{ticket.status}}</span></td>
 									{% endif %}
 									<td>{{ticket.ticket_type}}</td>
 									<td>{{ticket.chanel}}</td>

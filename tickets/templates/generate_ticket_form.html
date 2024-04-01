@@ -7,7 +7,57 @@
 {% endblock %}
 
 {% block content %}
-    <h3> Form ticket</h3>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a class="text-decoration-none link-primary" href="{% url 'dashboard' %}">Menú</a></li>
+            <li class="breadcrumb-item"><a class="text-decoration-none link-primary" href="{% url 'tickets' %}">Gestor de tickets</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'generate_ticket' %}"><span class="badge bg-secondary rounded-pill">Nuevo ticket</span></a></li>
+        </ul>
+    </nav>
+    <h3 class="mb-5 text-center lead dispay-5">Formulario de creación de tickets <i class="fas fa-ticket-alt"></i></h3>
+
+    <form action="">
+			<div class="row">
+				<div class="col col col-sm-4 ">
+					<div class="form-group">
+							<label class="form-label" for="subject"> Asunto</label>
+							<input class="form-control g-3" type="text" id="subject" name="subject" required placeholder="Asunto">
+					</div>
+				</div>
+				<div class="col col col-sm-4 ">
+					<div class="form-group">
+						<label class="form-label" for="customer"> Nombre del cliente</label>
+						<select class="form-select" name="customer" id="customer">
+							<option value="">Clientes</option>
+							{% for ticket in tickets %}
+								<option value="{{ticket.customer}}">{{ticket.customer}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				<div class="col col-sm-4 mb-5">
+					<div class="form-group">
+						<label class="form-label" for="asigned"> Asignar a </label>
+						<select class="form-select" name="asigned" id="asigned">
+							<option value="">Asignar</option>
+							<option value="Departamento de sistemas">Departamento de sistemas</option>
+							<option value="Departamento de ventas">Departamento de ventas</option>
+							<option value="Departamento de ventas">Departamento de recursos humanos</option>
+							<option value="Soporte IT">Soporte IT</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-start col-xs-2">
+					<input class="form-control" type="text">
+				</div>
+				<div class="col">
+					<input class="form-control" type="text">
+				</div>
+			</div>
+
+		</form>
+
+
     {% block child_js_below_files %} 
         <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
     {% endblock %}
