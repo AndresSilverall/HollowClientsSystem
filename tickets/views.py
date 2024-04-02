@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from tickets.models import Tickets
+from django.contrib import messages
 
 
 # Vista para la gestion de tickets
@@ -28,6 +29,22 @@ def tickets_management(request):
 # Vista para generar un nuevo ticket
 def generate_ticket_form(request):
     tickets = Tickets.objects.all()
+    get_customer_id = Tickets.objects.filter(customer=request.POST.get("customer"))
+    if request.method == "POST":
+        new_ticket = Tickets.objects.create(
+            subject=request.POST.get("subject"),
+            customer=get_customer_id,
+            asigned_to=request.POST.get("asigned"),
+            agent=request.POST.get("agent"),
+            description=request.POST.get("description"),
+            priority=request.POST.get("priority"),
+            status=request.POST.get("status"),
+            ticket_type=request.POST.get("ticketType"),
+            chanel=request.POST.get("channel")
+        )
+        new_ticket.save()
+        messages.success(request, "Ticket creado conn exito!, click para ver")
+
     context = {
         "tickets": tickets
     }

@@ -15,8 +15,16 @@
         </ul>
     </nav>
     <h3 class="mb-5 text-center lead dispay-5">Formulario de creación de tickets <i class="fas fa-ticket-alt"></i></h3>
+		{% if messages %}
+			{% for message in messages %}
+					<div class="alert alert-success mt-3">
+						{{message}}
+					</div>
+			{% endfor %}
+		{% endif %}
 
-    <form action="">
+    <form action="{% url 'generate_ticket' %}" method="POST">
+			{% csrf_token %}
 			<div class="row">
 				<div class="col col col-sm-4 ">
 					<div class="form-group">
@@ -28,7 +36,7 @@
 					<div class="form-group">
 						<label class="form-label" for="customer"> Nombre del cliente</label>
 						<select class="form-select" name="customer" id="customer">
-							<option value="">Clientes</option>
+							<option value=""></option>
 							{% for ticket in tickets %}
 								<option value="{{ticket.customer}}">{{ticket.customer}}</option>
 							{% endfor %}
@@ -39,7 +47,7 @@
 					<div class="form-group">
 						<label class="form-label" for="asigned"> Asignar a </label>
 						<select class="form-select" name="asigned" id="asigned">
-							<option value="">Asignar</option>
+							<option value=""></option>
 							<option value="Departamento de sistemas">Departamento de sistemas</option>
 							<option value="Departamento de ventas">Departamento de ventas</option>
 							<option value="Departamento de ventas">Departamento de recursos humanos</option>
@@ -47,17 +55,68 @@
 						</select>
 					</div>
 				</div>
-				<div class="col-start col-xs-2">
-					<input class="form-control" type="text">
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<label class="form-label" for="agent">Agente</label>
+							<input class="form-control" type="text" name="agent" id="agent" placeholder="Agente encargado">
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<label class="form-label" for="priority">Prioridad</label>
+							<select class="form-select" name="priority" id="priority">
+								<option value=""></option>
+								<option value="Alta">Alta</option>
+								<option value="Mediana">Mediana</option>
+								<option value="Normal">Nomal</option>
+							</select>
+						</div>
+					</div>
 				</div>
-				<div class="col">
-					<input class="form-control" type="text">
+				<div class="row py-5">
+					<div class="col">
+						<div class="form-group">
+							<label class="form-label" for="description">Descripción</label>
+							<textarea class="form-control" name="description" id="description" cols="5" rows="5s"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<label class="form-label" for="status">Estado</label>
+							<input class="form-control" type="text" name="status" id="status" readonly value="Abierto">
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<label class="form-label" for="ticketType">Tipo de ticket</label>
+							<select class="form-select" name="ticketType" id="ticketType">
+								<option value=""></option>
+								<option value="Consulta">Consulta</option>
+								<option value="Problema técnico">Problema técnico</option>
+								<option value="Problema factura">Problema de factura</option>
+								<option value="Cambio de contraseña">Cambio de contraseña</option>
+							</select>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<label class="form-label" for="channel">Canal de comunicación</label>
+							<select class="form-select" name="channel" id="channel">
+								<option value=""></option>
+								<option value="Email">Email</option>
+								<option value="Chat de soporte">Chat de soporte</option>
+								<option value="Llamada">Llamada</option>
+								<option value="Chat en vivo">Chat en vivo</option>
+							</select>
+						</div>
+					</div>
+					<button class="btn btn-outline-success d-flex justify-content-center mt-5" type="submit">Crear ticket</button>
 				</div>
 			</div>
-
 		</form>
-
-
     {% block child_js_below_files %} 
         <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
     {% endblock %}
