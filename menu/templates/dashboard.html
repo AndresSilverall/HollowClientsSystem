@@ -74,18 +74,20 @@
                                 <span class="ms-1 d-none d-sm-inline"><i class="fas fa-boxes"></i> Inventario</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0"><i class="fas fa-tasks"></i> <span
-                                            class="d-none d-sm-inline">Tasks</span> 1</a>
+                                    <a href="{% url 'brands' %}" class="nav-link px-0"><span class="d-none d-sm-inline"><i class="far fa-copyright"></i> Marcas</span></a>
                                 </li>
                                 <li>
-                                    <a class="text-decoration-none" href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+                                    <a href="{% url 'stores' %}" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fas fa-store"></i> Tiendas</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+                                    <a href="{% url 'category' %}" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fas fa-tags"></i> Categorias</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                                    <a href="{% url 'products' %}" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fas fa-box-open"></i> Productos</span></a>
                                 </li>
+																<li>
+																	<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fas fa-boxes"></i> Gestionar productos</span></a>
+															</li>
                             </ul>
                         </li>
                         <li>
@@ -175,69 +177,63 @@
                         </div>
                     </div>
                 </div>
+								    <!-- Script ara las estadisticas de tasks-->
+    <script>
+			const ctx = document.getElementById('myChart');
+
+			new Chart(ctx, {
+					type: 'pie',
+					data: {
+							labels: ["Total de tasks", "Completadas", "Asignadas"],
+							datasets: [{
+									label: '# de Tasks',
+									data: ["{{tasks}}", "{{is_finished}}", 12],
+									borderWidth: 1
+							}]
+					},
+					options: {
+							"response": true,
+							"maintainAspectRatio": false,
+							scales: {
+									y: {
+											beginAtZero: true
+									}
+							}
+					}
+			});
+	</script>
+
+	<!-- Script ara las estadisticas de contactos-->
+	<script>
+			const contacts = document.getElementById('contactsChart');
+
+			new Chart(contacts, {
+					type: 'bar',
+					data: {
+							labels: ["Clientes obtenidos", "Campañas de marketing", "Sin campañas de marketing"],
+							datasets: [{
+									label: 'Gestión de clientes y campañas de marketing',
+									data: ["{{customers}}", "{{customers_campaing}}", "{{no_marketing_campaing}}"],
+									borderWidth: 1
+							}]
+					},
+					options: {
+							"response": true,
+							"maintainAspectRatio": false,
+							scales: {
+									y: {
+											beginAtZero: true
+									}
+							}
+					}
+			});
+	</script>
 							{% endblock %}
             </div>
         </div>
     </div>
 		
     {% block child_js_below_files %}
-		<script src="{% static 'js/table.js' %}"></script>
-		<script src="{% static 'js/dataTables.js' %}"></script>
-		<script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
-		<script src="{% static 'js/hide_message.js' %}"></script>
-    
-    <!-- Script ara las estadisticas de tasks-->
-    <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ["Total de tasks", "Completadas", "Asignadas"],
-                datasets: [{
-                    label: '# de Tasks',
-                    data: ["{{tasks}}", "{{is_finished}}", 12],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                "response": true,
-                "maintainAspectRatio": false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-
-    <!-- Script ara las estadisticas de contactos-->
-    <script>
-        const contacts = document.getElementById('contactsChart');
-
-        new Chart(contacts, {
-            type: 'bar',
-            data: {
-                labels: ["Clientes obtenidos", "Campañas de marketing", "Sin campañas de marketing"],
-                datasets: [{
-                    label: 'Gestión de clientes y campañas de marketing',
-                    data: ["{{customers}}", "{{customers_campaing}}", "{{no_marketing_campaing}}"],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                "response": true,
-                "maintainAspectRatio": false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-		
 		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     {% endblock %}
 </body>
