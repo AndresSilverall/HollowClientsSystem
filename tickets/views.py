@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from tickets.models import Tickets
 from django.contrib import messages
+from contacts.models import CustomersManagement
 
 
 # Vista para la gestion de tickets
@@ -28,9 +29,10 @@ def tickets_management(request):
 
 # Vista para generar un nuevo ticket
 def generate_ticket_form(request):
+    all_customers = CustomersManagement.objects.all()
     tickets = Tickets.objects.all()
-    get_customer_id = Tickets.objects.filter(customer=request.POST.get("customer"))
     if request.method == "POST":
+        get_customer_id = CustomersManagement.objects.get(customer=request.POST.get("customer"))
         new_ticket = Tickets.objects.create(
             subject=request.POST.get("subject"),
             customer=get_customer_id,
@@ -43,14 +45,29 @@ def generate_ticket_form(request):
             chanel=request.POST.get("channel")
         )
         new_ticket.save()
-        messages.success(request, "Ticket creado conn exito!, click para ver")
+        messages.success(request, "¡Ticket creado con exito!")
 
     context = {
-        "tickets": tickets
+        "tickets": tickets,
+        "customers":all_customers
     }
     return render(request, "generate_ticket_form.html", context=context)
 
 
 # Vista para cerrar un ticket
-def close_ticket(request):
-    pass
+def close_ticket(request, pk: None):
+    ticket = Tickets.objects.get(id=pk)
+    if request.method == "POST":
+        ticket.status = "Cerrado"
+        ticket.save()
+    return redirect("tickets")
+
+
+# vista para eliminar ticket
+def delete_ticket(request, pk):
+    ticket = Tickets.objects.get(id=pk)
+    if request.method == "POST":
+        ticket.delete()
+    return redirect("tickets")
+
+        
