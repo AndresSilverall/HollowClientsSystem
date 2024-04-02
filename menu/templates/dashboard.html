@@ -175,11 +175,17 @@
                         </div>
                     </div>
                 </div>
+							{% endblock %}
             </div>
         </div>
     </div>
+		
     {% block child_js_below_files %}
-    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'js/table.js' %}"></script>
+		<script src="{% static 'js/dataTables.js' %}"></script>
+		<script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
+		<script src="{% static 'js/hide_message.js' %}"></script>
+    
     <!-- Script ara las estadisticas de tasks-->
     <script>
         const ctx = document.getElementById('myChart');
@@ -231,8 +237,8 @@
             }
         });
     </script>
-
-    {% endblock %}
+		
+		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     {% endblock %}
 </body>
 </html>

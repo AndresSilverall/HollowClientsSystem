@@ -258,15 +258,18 @@
         </table>
     </div>
 
+		<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     {% block child_js_below_files %}
+			<script src="{% static 'js/table.js' %}"></script>
+			<script src="{% static 'js/dataTables.js' %}"></script>
+			<script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
+			<script src="{% static 'js/hide_message.js' %}"></script>
         <script>
             $('#myModal').on('shown.bs.modal', function () {
                 $('#myInput').trigger('focus')
             });
         </script>
-        <script src="{% static 'js/table.js' %}"></script>
-        <script src="{% static 'js/dataTables.js' %}"></script>
-        <script src="{% static 'js/dataTables.bootstrap5.js' %}"></script>
-        <script src="{% static 'js/hide_message.js' %}"></script>
+			
     {% endblock %}
+	
 {% endblock %}
