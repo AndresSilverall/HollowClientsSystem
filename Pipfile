@@ -9,6 +9,7 @@ fontawesome-free = "==5.15.4"
 pymysql = "*"
 cryptography = "*"
 django-jazzmin = "*"
+weasyprint = "*"
 
 [dev-packages]
 

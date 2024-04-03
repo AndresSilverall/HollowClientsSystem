@@ -229,7 +229,7 @@ def add_order(request):
         )
         order.save()
         messages.success(request, "Orden agregada con exito!")
-        
+
     return redirect("orders")
 
 
@@ -239,3 +239,14 @@ def delete_order(request, pk: None):
         order.delete()
 
     return redirect("orders")
+
+
+# Vista para generar los reportes de los pedidos
+def generate_order_report(request, pk: None):
+    get_order_id = Order.objects.get(id=pk)
+    orders = Order.objects.all()
+
+    context = {
+        "orders": orders
+    }
+    return render(request, "order_report.html", context=context)

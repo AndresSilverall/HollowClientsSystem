@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <title>Reporte del pedido</title>
+</head>
+<body>
+
+    <div class="container py-5">
+        <img src="{% static 'images/logo_brand.png' %}" alt="logo_brand.png" width="400px" height="90px">
+        <div class="row mt-5">
+						{% for order in orders %}
+            <div class="col">
+                Nombre del cliente: <b>{{order.customer}}</b> 
+            </div>
+            <div class="col">
+                # de pedido: <b>{{order.id}}</b>
+            </div>
+            <div class="col col-end">
+                Dirección: <b>{{order.adress}}</b>
+								<div class="row">
+									<div class="col col-end">
+										Pais: <b>COL</b>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col col-end">
+										Correo: <b>N/A</b>
+									</div>
+								</div>
+            </div>
+						{% endfor %}
+        </div>
+
+				<div class="table-responsive py-5">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Cliente</th>
+								<th>Producto</th>
+								<th>Dirección</th>
+								<th>Teléfono</th>
+								<th>Precio total</th>
+								<th>Fecha</th>
+								<th>Empleado</th>
+							</tr>
+						</thead>
+							<tbody>
+								{% for order in orders %}
+									<tr>
+										<td>{{order.id}}</td>
+										<td>{{order.customer}}</td>
+										<td>{{order.product}}</td>
+										<td>{{order.adress}}</td>
+										<td>{{order.phone}}</td>
+										<td>{{order.total_price}}</td>
+										<td>{{order.created_at}}</td>
+										<td>{{request.user}}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+					</table>
+				</div>
+				<hr>
+				<h3 class="text-center display-5">¡Gracias por su compra!</h3>
+    </div>    
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
