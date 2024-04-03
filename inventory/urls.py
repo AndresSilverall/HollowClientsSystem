@@ -27,6 +27,6 @@ urlpatterns = [
     # Pedidos
     path('addOrder/', views.add_order, name="add_order"),
     path('deleteOrder/<str:pk>', views.delete_order, name="delete_order"),
-    path('orderReport/', views.generate_order_report, name="generate_report"),
+    path('orderReport/<str:pk>', views.generate_order_report, name="generate_report"),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

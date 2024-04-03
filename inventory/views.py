@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from contacts.models import CustomersManagement
+from inventory.utils import render_to_pdf
+import datetime
+from django.http import HttpResponse
 from inventory.models import (
     Product,
     Category,
@@ -244,9 +247,15 @@ def delete_order(request, pk: None):
 # Vista para generar los reportes de los pedidos
 def generate_order_report(request, pk: None):
     get_order_id = Order.objects.get(id=pk)
-    orders = Order.objects.all()
+    date_today = datetime.datetime.now()
+    date_today.strftime("%d %m %y %H: %M %p")
+    orders = Order.objects.filter(id=pk)
+    print(orders)
 
     context = {
-        "orders": orders
+        "orders": orders,
+        "date": date_today
     }
-    return render(request, "order_report.html", context=context)
+    pdf = render_to_pdf("order_report.html", context)
+
+    return HttpResponse(pdf, content_type="application/pdf")

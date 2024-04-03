@@ -10,6 +10,7 @@ pymysql = "*"
 cryptography = "*"
 django-jazzmin = "*"
 weasyprint = "*"
+xhtml2pdf = "*"
 
 [dev-packages]
 

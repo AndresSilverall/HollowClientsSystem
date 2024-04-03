@@ -1,44 +1,29 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
-    <title>Reporte del pedido</title>
 </head>
 <body>
+			<div style="font-size: larger;">
+				{% for order in orders %}
+						Empresa: <b>Hollow Customers System</b>
+						<br>
+						Fecha y hora: <b>{{date}}</b>
+						<br>
+						Nombre del cliente: <b>{{order.customer}}</b> 
+						<br>
+						# de pedido: <b>{{order.id}}</b>
+						<br>
+						Dirección: <b>{{order.adress}}</b>
+						<br>
+						Pais: <b>COL</b>
+						<br>
+						Correo: <b>N/A</b>
+				{% endfor %}
+			</div>  
 
-    <div class="container py-5">
-        <img src="{% static 'images/logo_brand.png' %}" alt="logo_brand.png" width="400px" height="90px">
-        <div class="row mt-5">
-						{% for order in orders %}
-            <div class="col">
-                Nombre del cliente: <b>{{order.customer}}</b> 
-            </div>
-            <div class="col">
-                # de pedido: <b>{{order.id}}</b>
-            </div>
-            <div class="col col-end">
-                Dirección: <b>{{order.adress}}</b>
-								<div class="row">
-									<div class="col col-end">
-										Pais: <b>COL</b>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col col-end">
-										Correo: <b>N/A</b>
-									</div>
-								</div>
-            </div>
-						{% endfor %}
-        </div>
-
-				<div class="table-responsive py-5">
-					<table class="table">
+				<br>
+				<br>
+				<br>
+					<table>
 						<thead>
 							<tr>
 								<th>ID</th>
@@ -68,9 +53,8 @@
 					</table>
 				</div>
 				<hr>
-				<h3 class="text-center display-5">¡Gracias por su compra!</h3>
-    </div>    
-
-    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-</body>
+				<br>
+				<br>
+				<h3 style="font-size: larger;">¡Gracias por su compra!</h3>
+	</body>
 </html>
