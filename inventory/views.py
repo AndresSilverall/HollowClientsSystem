@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from contacts.models import CustomersManagement
 from inventory.models import (
     Product,
     Category,
@@ -42,10 +43,19 @@ def brands(request):
     return render(request, "brands.html", context=context)
 
 
-# Vista para las ordenes
+# Vista para los pedidos
 @login_required(redirect_field_name="login")
 def orders(request):
-    return render(request, "orders.html")
+    customers = CustomersManagement.objects.all()
+    products = Product.objects.all()
+    orders = Order.objects.all()
+
+    context = {
+        "products": products,
+        "orders": orders,
+        "customers":customers
+    } 
+    return render(request, "orders.html", context=context)
 
 
 # Vista para los productos
@@ -206,3 +216,26 @@ def add_product(request):
     return redirect("products")
 
 
+def add_order(request):
+    if request.method == "POST":
+        get_customer_name = CustomersManagement.objects.get(customer=request.POST.get("customer"))
+        get_product_name = Product.objects.get(name=request.POST.get("productName"))
+        order = Order.objects.create(
+            customer = get_customer_name,
+            product = get_product_name,
+            adress = request.POST.get("address"),
+            phone = request.POST.get("phone"),
+            total_price = request.POST.get("totalPrice")
+        )
+        order.save()
+        messages.success(request, "Orden agregada con exito!")
+        
+    return redirect("orders")
+
+
+def delete_order(request, pk: None):
+    if request.method == "POST":
+        order = Order.objects.get(id=pk)
+        order.delete()
+
+    return redirect("orders")

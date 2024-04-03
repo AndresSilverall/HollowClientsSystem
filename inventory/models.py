@@ -1,5 +1,6 @@
 from django.db import models
 from contacts.models import CustomersManagement
+import datetime
 
 
 # Modelo de las marcas de los productos.
@@ -54,6 +55,14 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
 
+    # Precio total
+    def total_price(self):
+        return self.price * self.quantity
+
+
+    def __str__(self):
+        return self.name
+
 
 # Modelo de las ordenes de los clientes
 class Order(models.Model):
@@ -61,3 +70,9 @@ class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     adress = models.CharField("Direccion", max_length=30, null=True, blank=True)
     phone = models.CharField("Telefono", max_length=15, null=True, blank=True)
+    total_price = models.CharField("Telefono", max_length=15, null=True, blank=True)
+    created_at = models.DateField(auto_now_add=True)
+
+
+    def __str__(self):
+        return str(self.product.name)

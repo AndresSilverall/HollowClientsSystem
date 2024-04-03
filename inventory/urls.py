@@ -24,5 +24,8 @@ urlpatterns = [
     path('deleteCategory/<str:pk>', views.delete_category, name="delete_category"),
     # Productos
     path('addProduct/', views.add_product, name="new_product"),
+    # Pedidos
+    path('addOrder/', views.add_order, name="add_order"),
+    path('deleteOrder/<str:pk>', views.delete_order, name="delete_order"),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
