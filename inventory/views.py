@@ -167,7 +167,7 @@ def add_category(request):
             status=request.POST.get("categoryStatus"),
         )
         category.save()
-        messages.success(request, "Categoria agregada con exito")
+        messages.success(request, "Categoria agregada con exito!")
     return redirect("category")
 
 

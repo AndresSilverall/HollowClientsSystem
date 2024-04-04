@@ -18,7 +18,8 @@
 
 		{% if messages %}
 			{% for message in messages %}
-				<div class="alert alert-success mt-4 alert-dismissible fade show" role="alert" style="width: 350px;">
+				<div class="alert alert-success mt-4 alert-dismissible fade show text-center" role="alert" style="width: 350px;">
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 					{{message}}
 				</div>
 			{% endfor %}
@@ -67,7 +68,12 @@
 					{% for brand in brands %}
 						<tr>
 							<td>{{brand.name}}</td>
-							<td>{{brand.status}}</td>
+							{% if brand.status == "Activo" %}
+									<td><span class="badge bg-success rounded-pill">{{brand.status}}</span></td>
+							{% else %}
+									<td><span class="badge bg-danger rounded-pill">{{brand.status}}</span></td>
+							{% endif %}
+
 							<div class="modal fade" id="deleteBrand{{ brand.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteBrand" aria-hidden="true">
 								<div class="modal-dialog">
 										<div class="modal-content">

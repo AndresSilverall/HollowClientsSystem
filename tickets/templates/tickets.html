@@ -28,10 +28,7 @@
             <h2 class="lead">Tickets abiertos: {{open_tickets}}</h2>
         </div>
         <div class="p-4 border">
-            <h2 class="lead">Tickets pendientes</h2>
-        </div>
-        <div class="p-4 border">
-            <h2 class="lead">Tickets resueltos</h2>
+            <h2 class="lead">Tickets pendientes: {{open_tickets}}</h2>
         </div>
     </div>
     <a class="btn btn-outline-secondary" href="{% url 'generate_ticket' %}"><i class="fas fa-plus"></i> Crear un nuevo ticket</a>
@@ -94,7 +91,7 @@
 														</div>
 												</div>
 										</div>
-									<td class="text-center"><li class="dropdown list-unstyled">
+									<td><li class="dropdown list-unstyled">
 										<a class="text-decoration-none" id="Dropdown-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											<i class="fas fa-bars justify-content-center"></i>
 										</a>

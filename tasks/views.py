@@ -67,8 +67,9 @@ def update_task(request, pk: None):
         tasks.status = user_data.get("status")
         tasks.due_date = user_data.get("due_date")
         tasks.save()
-    
 
+        messages.success(request, "Tarea acualizada con exito!")
+    
     return redirect("tasks")
 
 

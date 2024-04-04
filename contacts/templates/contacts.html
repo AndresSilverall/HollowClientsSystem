@@ -14,7 +14,7 @@
     <h3 class="text-center lead">Gestionar clientes y campañas de marketing <i class="fas fa-users"></i></h3>
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" style="width: 350px;">
+            <div class="alert alert-success alert-dismissible fade show mt-3 text-center" role="alert" style="width: 350px;">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 								{{message}}
             </div>
@@ -26,7 +26,7 @@
         <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addContact">Crear un contacto <i class="fas fa-address-book"></i></button>
     </div>
 
-    <div class="justify-content-center py-4">
+    <div class="justify-content-center py-3">
         <a class="text-decoration-none text-white btn btn-success btn-sm" href="{% url 'contacts' %}">Refrescar <i class="fas fa-sync-alt"></i></a>
     </div>
 

@@ -17,9 +17,9 @@
     <h3 class="text-center lead"> Gestionar tareas <i class="fas fa-tasks"></i></h3>
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert" style="width: 350px;">
+            <div class="alert alert-success alert-dismissible fade show mt-4 text-center" role="alert" style="width: 350px;">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                Tarea agregada con éxito!
+                {{message}}
             </div>
         {% endfor %}
     {% endif %}
@@ -104,8 +104,12 @@
                         {% elif task.priority == "Mediana" %}
                             <td><span class="badge rounded-pill bg-warning">{{ task.priority }}</span></td>
                         {% endif %}
-												
-                        <td>{{ task.status }}</td>
+						
+                        {% if task.status == "Finalizada" %}
+                            <td><span class="badge rounded-pill bg-danger">{{ task.status }}</span></td>
+                        {% else %}
+                            <td><span class="badge rounded-pill bg-info">{{ task.status }}</span></td>
+                        {% endif %}
                         <td>{{ task.created_at }}</td>
                         <td>{{ task.due_date }}</td>
 												<div class="modal fade" id="TaskDelete{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="TaskDelete" aria-hidden="true">

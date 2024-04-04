@@ -17,8 +17,9 @@
 			<h3 class="lead text-center">Gestiona las categorias de los productos <i class="fas fa-tags"></i></h3>
 			{% if messages %}
 				{% for message in messages %}
-						<div class="alert alert-success mt-5 alert-dismissible fade show" role="alert" style="width: 350px;">
-							{{message}} <a class="text-decoration-none" href="">Click para ver.</a>
+						<div class="alert alert-success mt-5 alert-dismissible fade show text-center" role="alert" style="width: 400px;">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							{{message}} <a class="text-decoration-none" href="{% url 'orders' %}">Click para ver.</a>
 						</div>
 				{% endfor %}
 			{% endif %}
