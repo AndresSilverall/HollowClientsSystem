@@ -122,12 +122,13 @@ La aplicación cuenta con diferentes módulos (apps), cada uno encargado de real
 
 ## Comandos para ejecutar las pruebas unitarias de los diferentes modulos
 
-`
-pipenv run test-authentication
+```python
+
+pipenv run test-authentication 
 pipenv run test-tasks
 pipenv run test-menu
 
-`
+```
 
 ### Caso de prueba del modulo authentication
 
