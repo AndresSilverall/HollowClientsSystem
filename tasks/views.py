@@ -74,6 +74,7 @@ def update_task(request, pk: None):
 
 
 # Vista para finalizar una tarea
+@login_required(redirect_field_name="login")
 def task_is_finished(request, pk: None):
     if request.method == "POST":
         tasks = TasksManagement.objects.get(id=pk)

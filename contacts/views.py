@@ -5,9 +5,11 @@ from contacts.models import CustomersManagement
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.contrib.auth.decorators import login_required
 
 
 # Vista para gestionar los contactos y crear campañas de marketing.
+@login_required(redirect_field_name="login")
 def contact_management(request):
     customers = CustomersManagement.objects.all()
     context = {
@@ -18,6 +20,7 @@ def contact_management(request):
 
 
 # Vista para agregar un nuevo cliente
+@login_required(redirect_field_name="login")
 def add_contact(request):
     if request.method == "POST":
         customer = CustomersManagement.objects.create(
@@ -40,6 +43,7 @@ def add_contact(request):
 
 
 # Vista para actulizar un cliente
+@login_required(redirect_field_name="login")
 def update_customer(request, pk:None):
     if request.method == "POST":
         customer = CustomersManagement.objects.get(id=pk)
@@ -70,6 +74,7 @@ def update_customer(request, pk:None):
     return redirect("contacts")
 
 # Vista para eliminar un cliente
+@login_required(redirect_field_name="login")
 def delete_customer(request, pk):
     if request.method == "POST":
         customer = CustomersManagement.objects.get(id=pk)
@@ -78,6 +83,7 @@ def delete_customer(request, pk):
 
 
 # Vista para crear una campaña de marketing a un cliente
+@login_required(redirect_field_name="login")
 def send_marketing_campaing(request, pk: None):
   
     if request.method == "POST":

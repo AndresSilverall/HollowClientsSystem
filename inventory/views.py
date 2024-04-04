@@ -219,6 +219,11 @@ def add_product(request):
     return redirect("products")
 
 
+# -------------------------- CRUD para gestionar las los pedidos  -----------------------
+
+
+# Vista para agregar un nuevo pedido
+@login_required(redirect_field_name="login")
 def add_order(request):
     if request.method == "POST":
         get_customer_name = CustomersManagement.objects.get(customer=request.POST.get("customer"))
@@ -236,6 +241,8 @@ def add_order(request):
     return redirect("orders")
 
 
+# Vista para eliminar un pedido de un cliente
+@login_required(redirect_field_name="login")
 def delete_order(request, pk: None):
     if request.method == "POST":
         order = Order.objects.get(id=pk)
@@ -245,6 +252,7 @@ def delete_order(request, pk: None):
 
 
 # Vista para generar los reportes de los pedidos
+@login_required(redirect_field_name="login")
 def generate_order_report(request, pk: None):
     get_order_id = Order.objects.get(id=pk)
     date_today = datetime.datetime.now()

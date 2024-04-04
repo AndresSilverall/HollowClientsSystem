@@ -11,7 +11,7 @@ from inventory.models import (
 )
 
 
-# Vista del menu principal
+# Vista del panel de graficos estadisticos
 def dashboard(request):
 
     # Estadisticas de la gestion de area
@@ -36,6 +36,7 @@ def dashboard(request):
     active_customers = CustomersManagement.objects.filter(status="Activo").count()
     customers_marketing_campaings = CustomersManagement.objects.filter(campaing="Campaña agregada").count()
     no_marketing_campaings = CustomersManagement.objects.filter(campaing="Sin campaña").count()
+    
     context = {
         "tasks": tasks,
         "is_finished": tasks_done,

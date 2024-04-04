@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
 
 
@@ -37,29 +37,27 @@ class CreateNewUser(UserCreationForm):
 
 
 # Restablecer contraseña
-class ChangePasswordForm(PasswordChangeForm):
+class ChangePasswordForm(SetPasswordForm):
+    class Meta:
+        model = User
+        fields = ["new_password1", "new_password2"]
 
     def __init__(self, user, *args, **kwargs):
         self.user = user
         super().__init__(user, *args, **kwargs)
-        
-        self.fields['old_password'].widget.attrs.update({
-            'id': 'old_password',
-            'required': True,
-            'class': 'form-control form-control-ls', 
-            'placeholder': "Ingrese su antigua contraseña"
-            })
-        
+
         self.fields['new_password1'].widget.attrs.update({
             'id': 'new_password1', 
             'required': True,
-            'class': 'form-control form-control-ls', 
-            'placeholder': "Ingrese su nueva contraseña"
+            'class': 'form-control mb-4', 
+            'placeholder': "Ingrese su nueva contraseña",
+            'autocomplete': "Contraseña del usuario",
             })
         
         self.fields['new_password2'].widget.attrs.update({
             'id': 'new_password2', 
-            'class': 'form-control form-control-ls', 
+            'class': 'form-control', 
             'required': True,
-            'placeholder': "Confirme su nueva contraseña"
+            'placeholder': "Confirme su nueva contraseña",
+            'autocomplete': "Contraseña del usuario",
             })

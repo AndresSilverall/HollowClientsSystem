@@ -14,7 +14,7 @@
       <title>{% block title %}Menú principal {% endblock %}</title>
    </head>
    <body>
-      <nav class="navbar navbar-expand-lg navbar-expand-xl navbar-expand-md  bg-secondary bg-gradient" style="width:100%;">
+      <nav class="navbar navbar-expand-lg navbar-expand-xl navbar-expand-md  bg-secondary bg-gradient">
          <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'dashboard' %}"><img src="{% static 'images/logo_brand.png' %}" alt="logo_brand.png" width="250" height="40"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         {% if user.is_authenticated %}
                         <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> {{ request.user }}</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-lock"></i> Cambiar contraseña</a></li>
+                        <li><a class="dropdown-item" href="{% url 'change_password' %}"><i class="fas fa-users-cog"></i> Configuración</a></li>
                         <li>
                            <hr class="dropdown-divider">
                         </li>

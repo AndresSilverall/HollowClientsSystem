@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from smtplib import SMTPException
 from authentication.forms import CreateNewUser, ChangePasswordForm
@@ -16,9 +17,8 @@ def home_page(request):
     return render(request, "base.html")
 
 
+# Vista de registro de usuario, Valida los datos del formulario.
 def user_registration(request):
-
-    # Vista de registro de usuario, Valida los datos del formulario.
 
     form = CreateNewUser()
 
@@ -53,8 +53,6 @@ def user_login(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-        print(username,password)
-        print(request.method)
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -70,13 +68,16 @@ def user_login(request):
 
 
 # Vista de reestablecer contraseña
+@login_required(redirect_field_name="login")
 def restart_password(request):
-    form = ChangePasswordForm(user=request.user)
+    form = ChangePasswordForm(request.user)
     if request.method == "POST":
-        form = ChangePasswordForm(user=request.POST, data=request.POST)
+        form = ChangePasswordForm(request.user, request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Contraseña restablecida con exito!")
+            messages.success(request, "¡Contraseña actualizada con exito! inicie sesión de nuevo.")
+        else:
+            messages.error(request, "Error, ¡las contraseñas no coinciden!")
     
     context = {
         "form": form

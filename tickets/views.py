@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from tickets.models import Tickets
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from contacts.models import CustomersManagement
 
 
 # Vista para la gestion de tickets
+@login_required(redirect_field_name="login")
 def tickets_management(request):
     tickets = Tickets.objects.all()
 
@@ -28,6 +30,7 @@ def tickets_management(request):
 
 
 # Vista para generar un nuevo ticket
+@login_required(redirect_field_name="login")
 def generate_ticket_form(request):
     all_customers = CustomersManagement.objects.all()
     tickets = Tickets.objects.all()
@@ -55,6 +58,7 @@ def generate_ticket_form(request):
 
 
 # Vista para cerrar un ticket
+@login_required(redirect_field_name="login")
 def close_ticket(request, pk: None):
     ticket = Tickets.objects.get(id=pk)
     if request.method == "POST":
@@ -64,10 +68,9 @@ def close_ticket(request, pk: None):
 
 
 # vista para eliminar ticket
+@login_required(redirect_field_name="login")
 def delete_ticket(request, pk):
     ticket = Tickets.objects.get(id=pk)
     if request.method == "POST":
         ticket.delete()
     return redirect("tickets")
-
-        

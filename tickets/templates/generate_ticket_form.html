@@ -17,7 +17,7 @@
     <h3 class="mb-5 text-center lead dispay-5">Formulario de creación de tickets <i class="fas fa-ticket-alt"></i></h3>
 		{% if messages %}
 			{% for message in messages %}
-					<div class="alert alert-success mt-3 text-center mb-3">
+					<div class="alert alert-success mt-3 alert-dismissible fade show" role="alert" style="width: 350px;">
 						{{message}} <a class="text-decoration-none" href="{% url 'tickets' %}">Clic para ver.</a>
 					</div>
 			{% endfor %}
