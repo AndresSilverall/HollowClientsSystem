@@ -1,6 +1,6 @@
 # Hollow Customers system
 
-Aplicación web para el proyecto final de ADSO la cual consiste en administrar, gestionar y mejorar las relaciones entre una empresa y sus clientes, construida con el framework Django de Python, y otras tecnologías como JavaScript y CSS, Bootstrap y MySQL.
+Aplicación web para el proyecto final de ADSO la cual consiste en administrar, gestionar y mejorar las relaciones entre una empresa y sus clientes, desarrollada con el framework Django de Python, y otras tecnologías como JavaScript, CSS, Jquery,d: Bootstrap y MySQL.
 
 <img src="assets/logo.png" width="220" height="220" alt="logo.png">
 
@@ -22,10 +22,9 @@ Aplicación web para el proyecto final de ADSO la cual consiste en administrar, 
 ## Instalación y configuración
 
 1. Clona este repositorio: `https://github.com/AndresSilverall/HollowClientsSystem.git`
-2. Instale un gestor de entornos virtuales desde el gestor de paquetes de Python con el siguiente comando desde la terminal:  `pip install pipenv`
+2. Instale un administrador de entornos virtuales desde el gestor de paquetes de Python con el siguiente comando desde la terminal:  `pip install pipenv`
 3. Una vez ya instalado navegue a la carpeta del proyecto: `cd HollowClientsSystems`
-4. Ingrese el siguiente comando desde la terminal para activar el entorno viirtual e instalar todas las dependencias del proyecto que se encuentran alojadas en el archivo `Pipfile` del directorio raiz: `pipenv install
-`
+4. Ingrese el siguiente comando desde la terminal para activar el entorno viirtual e instalar todas las dependencias del proyecto que se encuentran alojadas en el archivo `Pipfile` del directorio raiz: `pipenv install`
 
 
 ## Configuración de la base de datos 
@@ -81,6 +80,33 @@ Comando `pipenv run make`: Este comando se utiliza para crear archivos de migrac
 Comando `pipenv run migrate`: Después de crear los archivos de migración, debes aplicar esos cambios a la base de datos utilizando el comando `pipenv run migrate`, rste comando ejecuta las migraciones pendientes y actualiza la estructura de la base de datos según las especificaciones de los archivos de migración generados. 
 
 
+## Configuración de las credenciales de Email
+
+Para configurar las credenciales de Email se hace de la misma forma que las credenciales de la base de datos que se encuentran alojada en el archivo `.env`
+
+```python
+# Credenciales de correo electronico
+
+EMAIL="emailexample@gmail.com" # Ingrese su correo electronico 
+PASSWORD="emailpassword" # Contraseña 
+
+```
+
+El siguiente codigo almacena las credenciales de email el cual se encuentra alojado en el archivo `settings.py`de la carpeta config.
+
+```python
+
+# Configuracion de correo electronico
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv("EMAIL") # Variable que almacena el correo del usuario 
+EMAIL_HOST_PASSWORD = os.getenv("PASSWORD") # Variable que almacena la contraseña
+
+```
+
+
 ## Ejecución de la aplicación
 
 Una vez ya realizadas las migraciones de la base de datos ejecute el siguiente comando para correr el servidor en el puerto 8000: 
@@ -93,7 +119,7 @@ pipenv run server
 luego abra su navegador web e ingrese la siguiente dirección: `127.0.0.1:8000` y podrá hacer uso del funcionamiento de la aplicación.
 
 
-## Ejecución de las pruebas software (Unit testing)
+## Pruebas software (Unit testing)
 
 ```python
 pipenv run test
