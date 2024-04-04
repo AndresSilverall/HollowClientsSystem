@@ -119,7 +119,17 @@ luego abra su navegador web e ingrese la siguiente dirección: `127.0.0.1:8000` 
 
 La aplicación cuenta con diferentes módulos (apps), cada uno encargado de realizar una función en específico, para comprobar que cada módulo realiza una acción esperada fue necesario implementar pruebas unitarias, ya que dentro de cada módulo se encuentran bloques de código, el objetivo es comprobar que cada bloque de código funcione correctamente para luego comprobar que todo el código en su conjunto funciona como es debido.
 
-# Ejemplo caso de prueba
+
+## Comandos para ejecutar las pruebas unitarias de los diferentes modulos
+
+`
+pipenv run test-authentication
+pipenv run test-tasks
+pipenv run test-menu
+
+`
+
+### Caso de prueba del modulo authentication
 
 | ID  	| Nombre de la prueba                  	| Tipo de prueba  	| Descripción                                                                           	| Entorno de prueba   	| Fecha      	| Autor          	| Entrada esperada                                                                                                     	| Salida esperada 	| Resultado 	|
 |-----	|--------------------------------------	|-----------------	|---------------------------------------------------------------------------------------	|---------------------	|------------	|----------------	|----------------------------------------------------------------------------------------------------------------------	|-----------------	|-----------	|
@@ -133,7 +143,6 @@ La aplicación cuenta con diferentes módulos (apps), cada uno encargado de real
 | 008 	| test_template_associated_to_url_fail 	| Prueba unitaria 	| Comprobar que la url no esta asociada al template "menu.html"                         	| Prueba automatizada 	| 15/03/2024 	| Andres Silvera 	| "menu.html"                                                                                                          	| Error           	| Aprobado  	|
 | 009 	| test_context_template_register       	| Prueba unitaria 	| Comprobar el context dentro del template de registro.                                 	| Prueba automatizada 	| 15/03/2024 	| Andres Silvera 	| "form"                                                                                                               	| Ok              	| Aprobado  	|
 
-```python
-pipenv run test
+## Demo
 
-```
+### Home page
