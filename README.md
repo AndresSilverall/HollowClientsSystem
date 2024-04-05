@@ -2,7 +2,7 @@
 
 Aplicación web para el proyecto final de ADSO la cual consiste en administrar, gestionar y mejorar las relaciones entre una empresa y sus clientes, desarrollada con el framework Django de Python, y otras tecnologías como JavaScript, CSS, Jquery, sBootstrap y MySQL.
 
-<img src="assets/logo.png" width="220" height="220" alt="logo.png">
+<img src="assets/logo.png" width="210" height="210" alt="logo.png">
 
 
 ## Tecnologías usadas
@@ -147,3 +147,28 @@ pipenv run test-menu
 ## Demo
 
 ### Home page
+
+<img src="assets/home_page.gif" alt="home_page.gif">
+
+### módulo de autenticación
+
+#### Registro de usuario
+<img src="assets/register.gif" alt="register.gif">
+
+#### Login de usuario
+<img src="assets/login.gif" alt="login.gif">
+
+### Formulario de contacto
+<img src="assets/contact_us.gif" alt="contact_us.gif">
+
+#### Restablecer contraseña
+<img src="assets/reset_password.gif" alt="reset_password.gif">
+
+
+
+## Menú principal y dashboard
+<img src="assets/menu.gif" alt="menu.gif">
+
+### Tasks
+### Campaña de marketing
+### Campaña de mar

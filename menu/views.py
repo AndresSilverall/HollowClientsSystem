@@ -29,7 +29,6 @@ def dashboard(request):
     all_tickets = Tickets.objects.count()
     closed_tickets= Tickets.objects.filter(status="Cerrado").count()
     open_tickets= Tickets.objects.filter(status="Abierto").count()
-    print(all_tickets, closed_tickets, open_tickets)
 
     # Estadisticas de la gestion de contactos y campañas de marketing
     customers = CustomersManagement.objects.count()

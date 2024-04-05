@@ -10,6 +10,9 @@ urlpatterns = [
     path('add/', view=views.add_task, name="add"),
     path('update/<str:pk>', view=views.update_task, name="update"),
     path('endTask/<str:pk>', view=views.task_is_finished, name="is_finished"),
+
+    # Asignar tareas
+    path('assignTask/', view=views.assign_task, name="assign_task"),
    
 
 

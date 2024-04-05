@@ -59,7 +59,8 @@
                     <button class="btn btn-outline-primary btn-lg" type="submit">Enviar</button><br>
                     {% if messages %}
                         {% for message in messages %}
-                            <div class="alert alert-success">
+                            <div class="alert alert-success alert-dismissible fade show mt-4 text-center">
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 <h3 class="lead text-center">{{message}}</h3>
                             </div>
                         {% endfor %}

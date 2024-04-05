@@ -41,11 +41,13 @@
                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
 									{% for message in messages %}
 											{% if messages %}
-												<div class="alert alert-success">
+												<div class="alert alert-success alert-dismissible fade show">
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 														{{ message }}
 												</div>
 											{% else %}
-												<div class="alert alert-danger">
+												<div class="alert alert-danger alert-dismissible fade show">
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 														{{ message.error }}
 												</div>
 											{% endif %}

@@ -117,6 +117,6 @@ def contact_us(request):
             messages.success(request, "Mensaje enviado con exito!")
 
     except SMTPException as e:
-        messages.error(request, "Ocurrio un error al enviar el mensaje: ", e)
+        messages.error(request, "Ocurrio un error al enviar el mensaje!", e)
 
     return render(request, "contact_us.html")

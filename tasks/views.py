@@ -84,3 +84,11 @@ def task_is_finished(request, pk: None):
 
     return redirect("tasks")
 
+
+# -------------------------------  Asignacion de tasks ---------------------------------------
+
+
+# Vista para la asignacion de tasks
+@login_required(redirect_field_name="login")
+def assign_task(request):
+    return render(request, "assign_task.html")
