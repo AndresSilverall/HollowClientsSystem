@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from tasks.models import TasksManagement
 from django.contrib import messages
+from tasks.models import (
+    TasksManagement,
+    AssignTask,
+    TeamMember,
+    Department
+)
 
 
 # Vista principal de Tareas
@@ -91,4 +96,35 @@ def task_is_finished(request, pk: None):
 # Vista para la asignacion de tasks
 @login_required(redirect_field_name="login")
 def assign_task(request):
-    return render(request, "assign_task.html")
+    departments = Department.objects.all()
+    team_members = TeamMember.objects.all()
+    assigned_tasks = AssignTask.objects.all()
+
+    context = {
+        "assignedTasks": assigned_tasks,
+        "teamMembers": team_members,
+        "departments": departments
+    }
+
+    return render(request, "assign_task.html", context=context)
+
+
+def assign_new_task(request):
+    if request.method == "POST":
+        team_member = TeamMember.objects.get(name=request.POST.get("assignedTo"))
+        department = Department.objects.get(name=request.POST.get("department"))
+
+        assign_task = AssignTask.objects.create(
+            title=request.POST.get("taskName"),
+            description=request.POST.get("taskDescription"),
+            status=request.POST.get("taskStatus"),
+            priority=request.POST.get("taskPriority"),
+            due_date=request.POST.get("dueDate"),
+            team_member=team_member,
+            department=department
+        )
+        assign_task.save()
+        messages.success("Tarea asignada con exito!")
+
+    return redirect("assign_task")
+    

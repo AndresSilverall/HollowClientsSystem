@@ -13,6 +13,7 @@ urlpatterns = [
 
     # Asignar tareas
     path('assignTask/', view=views.assign_task, name="assign_task"),
+    path('assignNewTask/', view=views.assign_new_task, name="assign_new_task"),
    
 
 
