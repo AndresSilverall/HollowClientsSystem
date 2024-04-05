@@ -40,7 +40,6 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=50, verbose_name='task title')),
                 ('description', models.TextField(max_length=200, verbose_name='description')),
                 ('priority', models.CharField(choices=[('Normal', 'N'), ('Mediana', 'M'), ('Alta', 'A')], default='Normal', max_length=10)),
-                ('is_finished', models.BooleanField(default=False)),
                 ('status', models.CharField(blank=True, max_length=15, null=True)),
                 ('due_date', models.DateField(null=True)),
                 ('created_at', models.DateField(auto_now_add=True, null=True, verbose_name='date')),

@@ -14,6 +14,9 @@ urlpatterns = [
     # Asignar tareas
     path('assignTask/', view=views.assign_task, name="assign_task"),
     path('assignNewTask/', view=views.assign_new_task, name="assign_new_task"),
+    path('deleteAssignedTask/<str:pk>', view=views.delete_an_assigned_task, name="delete_assigned_task"),
+    path('finalizeAssignedTask/<str:pk>', view=views.finalize_an_assigned_task, name="finalize_assigned_task"),
+    path('updateAssignedTask/<str:pk>', view=views.update_assigned_task, name="update_assigned_task"),
    
 
 

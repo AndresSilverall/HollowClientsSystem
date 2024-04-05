@@ -109,6 +109,8 @@ def assign_task(request):
     return render(request, "assign_task.html", context=context)
 
 
+# Vista para asignar una tarea nueva
+@login_required(redirect_field_name="login")
 def assign_new_task(request):
     if request.method == "POST":
         team_member = TeamMember.objects.get(name=request.POST.get("assignedTo"))
@@ -124,7 +126,53 @@ def assign_new_task(request):
             department=department
         )
         assign_task.save()
-        messages.success("Tarea asignada con exito!")
+
+        messages.success(request, "Tarea asignada con exito!")
 
     return redirect("assign_task")
     
+
+# Vista para asignar una tarea nueva
+@login_required(redirect_field_name="login")
+def delete_an_assigned_task(request, pk=None):
+    assign_task = AssignTask.objects.get(id=pk)
+    if request.method == "POST":
+        assign_task.delete()
+
+    return redirect("assign_task")
+
+
+# Vista para finalizar una tarea asignada
+@login_required(redirect_field_name="login")
+def finalize_an_assigned_task(request, pk: None):
+    assign_task = AssignTask.objects.get(id=pk)
+    if request.method == "POST":
+        assign_task.status = "Finalizada"
+        assign_task.save()
+    
+    return redirect("assign_task")
+
+
+# Vista para actualizar una tarea asignada
+@login_required(redirect_field_name="login")
+def update_assigned_task(request, pk: None):
+    assign_task = AssignTask.objects.get(id=pk)
+    if request.method == "POST":
+        team_member = TeamMember.objects.get(name=request.POST.get("assignedTo"))
+        department = Department.objects.get(name=request.POST.get("department"))
+
+        assign_task.title = request.POST.get("taskName")
+        assign_task.description = request.POST.get("taskDescription")
+        assign_task.status = request.POST.get("taskStatus")
+        assign_task.priority = request.POST.get("taskPriority")
+        assign_task.due_date = request.POST.get("dueDate")
+        assign_task.team_member = team_member
+        assign_task.department = department
+
+        assign_task.save()
+
+        messages.success(request, "Tarea actualizada con exito!")
+
+    return redirect("assign_task")
+
+

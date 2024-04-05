@@ -163,6 +163,16 @@
                            </div>
                         </div>
                      </div>
+									 </div>
+										<div class="card mb-3 d-flex justify-content-center">
+											 <div class="card-header text-center">
+													Estadísticas del numero de usuarios
+											 </div>
+											 <div class="card-body">
+												<div class="chart-container">
+													<canvas id="usersChart" style="width: 100px; height: 200px;"></canvas>
+											 </div>
+											 </div>
                   </div>
                </div>
 							 
@@ -176,7 +186,7 @@
                   				labels: ["Total de tasks", "Completadas", "Asignadas"],
                   				datasets: [{
                   						label: '# de Tasks',
-                  						data: ["{{tasks}}", "{{is_finished}}", 12],
+                  						data: ["{{tasks}}", "{{is_finished}}", "{{assigned_tasks}}"],
                   						borderWidth: 1
                   				}]
                   		},
@@ -191,6 +201,7 @@
                   		}
                   });
                </script>
+
                <!-- Script ara las estadisticas de contactos-->
                <script>
                   const contacts = document.getElementById('contactsChart');
@@ -267,6 +278,51 @@
                   		}
                   });
                </script>
+
+							  <!-- Script ara las estadisticas de usuarios-->
+               <script>
+                  const users = document.getElementById('usersChart');
+                  
+                  new Chart(users, {
+                  		type: 'bar',
+                  		data: {
+                  				labels: ["Usuarios activos"],
+                  				datasets: [{
+                  						label: 'Numero de usuarios',
+                  						data: ["{{users}}", 30],
+															backgroundColor: [
+															'rgba(255, 99, 132, 0.2)',
+															'rgba(255, 159, 64, 0.2)',
+															'rgba(255, 205, 86, 0.2)',
+															'rgba(75, 192, 192, 0.2)',
+															'rgba(54, 162, 235, 0.2)',
+															'rgba(153, 102, 255, 0.2)',
+															'rgba(201, 203, 207, 0.2)'
+														],
+														borderColor: [
+															'rgb(255, 99, 132)',
+															'rgb(255, 159, 64)',
+															'rgb(255, 205, 86)',
+															'rgb(75, 192, 192)',
+															'rgb(54, 162, 235)',
+															'rgb(153, 102, 255)',
+															'rgb(201, 203, 207)'
+														],
+                  						borderWidth: 1
+                  				}]
+                  		},
+                  		options: {
+                  				"response": true,
+                  				"maintainAspectRatio": false,
+                  				scales: {
+                  						y: {
+                  								beginAtZero: true
+                  						}
+                  				}
+                  		}
+                  });
+               </script>
+
                {% endblock %}
             </div>
          </div>

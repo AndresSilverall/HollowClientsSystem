@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from tasks.models import TasksManagement
+from django.contrib.auth.models import User
+from tasks.models import TasksManagement, AssignTask
 from contacts.models import CustomersManagement
 from tickets.models import Tickets
 from inventory.models import (
@@ -35,6 +36,12 @@ def dashboard(request):
     active_customers = CustomersManagement.objects.filter(status="Activo").count()
     customers_marketing_campaings = CustomersManagement.objects.filter(campaing="Campaña agregada").count()
     no_marketing_campaings = CustomersManagement.objects.filter(campaing="Sin campaña").count()
+
+    # Tareas asignadas
+    assigned_tasks = AssignTask.objects.all().count()
+
+    # usuarios registrados
+    users = User.objects.all().count()
     
     context = {
         "tasks": tasks,
@@ -50,6 +57,8 @@ def dashboard(request):
         "stores": stores,
         "tickets": all_tickets,
         "closed_tickets": closed_tickets,
-        "open_tickets": open_tickets
+        "open_tickets": open_tickets,
+        "assigned_tasks": assigned_tasks,
+        "users": users,
     }
     return render(request, "dashboard.html", context=context)
