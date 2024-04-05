@@ -49,6 +49,7 @@ def update_customer(request, pk:None):
         customer = CustomersManagement.objects.get(id=pk)
         customer_info = {
             "customer": request.POST.get("customer"),
+            "interaction": request.POST.get("interaction"),
             "address": request.POST.get("address"),
             "position": request.POST.get("position"),
             "preference": request.POST.get("preference"),
@@ -56,9 +57,10 @@ def update_customer(request, pk:None):
             "campaing": request.POST.get("campaing"),
             "email": request.POST.get("email"),
             "phoneNumber": request.POST.get("phoneNumber"),
-            "status": request.POST.get("status")
+            "status": request.POST.get("status"),
         }
-        customer.title = customer_info.get("customer")
+        customer.customer = customer_info.get("customer")
+        customer.interaction = customer_info.get("interaction")
         customer.address = customer_info.get("address")
         customer.position = customer_info.get("position")
         customer.preference = customer_info.get("preference")

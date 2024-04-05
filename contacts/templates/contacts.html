@@ -39,47 +39,47 @@
                         {% csrf_token %}
                         <div class="form-floating py-3">
                             <input class="form-control form-control-sm mb-2" name="customer" type="text" id="customer" maxlength="20" required aria-required="Por favor ingrese el nombre del cliente.">
-                            <label class="form-label" for="taskName">Nombre del cliente</label>
+                            <label class="form-label" for="customer">Nombre del cliente</label>
                         </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-sm mb-2" name="address" type="text" id="address" maxlength="40">
-                            <label class="form-label" for="taskDescription">Dirección</label>
+                            <label class="form-label" for="address">Dirección</label>
                         </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-sm mb-2" name="position" type="text" id="position" maxlength="20">
-                            <label class="form-label" for="taskDescription">Cargo</label>
+                            <label class="form-label" for="position">Cargo</label>
                         </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-lg mb-2" name="interaction" type="text" id="interaction" maxlength="20">
-                            <label class="form-label" for="taskStatus">Interacción</label>
+                            <label class="form-label" for="interaction">Interacción</label>
                         </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-lg mb-2" name="preference" type="text" id="preference" maxlength="25">
-                            <label class="form-label" for="taskStatus">Preferencia</label>
+                            <label class="form-label" for="preference">Preferencia</label>
                         </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-lg mb-2" name="notes" type="text" id="notes" maxlength="150">
-                            <label class="form-label" for="taskStatus">Notas</label>
+                            <label class="form-label" for="notes">Notas</label>
                         </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-lg mb-2" name="campaing" type="text" id="campaing" readonly value="Sin campaña">
-                            <label class="form-label" for="taskStatus">Campaña</label>
+                            <label class="form-label" for="campaing">Campaña</label>
                         </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-lg mb-2" name="email" type="email" id="email">
-                            <label class="form-label" for="taskStatus">Email</label>
+                            <label class="form-label" for="email">Email</label>
                         </div>
                         <div class="form-floating py-3">
                             <input class="form-control form-control-lg mb-2" name="phoneNumber" type="text" id="phoneNumber" maxlength="14">
-                            <label class="form-label" for="taskStatus">Teléfono</label>
+                            <label class="form-label" for="phoneNumber">Teléfono</label>
                         </div>
                         <div class="form-floating py-3">
-                            <select class="form-select" aria-label="Default select example" name="status" id="status">
+                            <select class="form-select" name="status" id="status">
 																<option selected></option>
 																<option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>
-                            <label for="priority" class="form-label">Estado</label>
+                            <label for="status" class="form-label">Estado</label>
                         </div>
 
                         <button type="submit" class="btn btn-outline-primary">Agregar Cliente</button>
