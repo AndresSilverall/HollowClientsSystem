@@ -1,6 +1,6 @@
 # Hollow Customers system
 
-<img src="assets/logo.png" width="430px" height="230px" alt="logo.png">
+<img src="assets/logo.png" width="469px" height="190px" alt="logo.png">
 
 Aplicación web para el proyecto final de ADSO la cual consiste en administrar, gestionar y mejorar las relaciones entre una empresa y sus clientes, desarrollada con el framework Django de Python, y otras tecnologías como JavaScript, CSS, Jquery, Bootstrap y MySQL.
 
