@@ -1,8 +1,8 @@
 # Hollow Customers system
 
-<img src="assets/logo.png" width="250" height="250" alt="logo.png">
+<img src="assets/logo.png" width="380px" height="250px" alt="logo.png">
 
-Aplicación web para el proyecto final de ADSO la cual consiste en administrar, gestionar y mejorar las relaciones entre una empresa y sus clientes, desarrollada con el framework Django de Python, y otras tecnologías como JavaScript, CSS, Jquery, sBootstrap y MySQL.
+Aplicación web para el proyecto final de ADSO la cual consiste en administrar, gestionar y mejorar las relaciones entre una empresa y sus clientes, desarrollada con el framework Django de Python, y otras tecnologías como JavaScript, CSS, Jquery, Bootstrap y MySQL.
 
 
 
@@ -181,10 +181,10 @@ pipenv run test-menu
 <img src="assets/assign_task.gif" alt="assign_task.gif">
 
 ### Gestión de contactos y campañas de marketing
-<img src="contacts.gif" alt="contacts.gif">
+<img src="assets/contacts.gif" alt="contacts.gif">
 
 ### Control de inventario
-<img src="inventory.gif" alt="inventory.gif">
+<img src="assets/inventory.gif" alt="inventory.gif">
 
 ### Sistema de tickets (customer service)
-<img src="tickets.gif" alt="tickets.gif">
+<img src="assets/tickets.gif" alt="tickets.gif">
